@@ -120,6 +120,10 @@ class EmpresasControlador extends Controller
      */
     public function destroy(string $id)
     {
-        
+        $operativo = Empresa::findOrFail($id);
+        $operativo->delete();
+    
+        // Redireccionar a la página o realizar alguna acción adicional
+        return redirect()->back();
     }
 }

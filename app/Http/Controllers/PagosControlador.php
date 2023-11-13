@@ -110,6 +110,10 @@ class PagosControlador extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $operativo = Pago::findOrFail($id);
+        $operativo->delete();
+    
+        // Redireccionar a la página o realizar alguna acción adicional
+        return redirect()->back();
     }
 }

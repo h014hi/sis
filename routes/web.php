@@ -55,11 +55,14 @@ Route::middleware([
             Route::get('/guardar-datos',[InspectorControlador::class,'store'])->name('guardar-datos');
             Route::get('/guardar-empresas',[EmpresasControlador::class,'store'])->name('guardar-empresas');
             Route::get('/inspectores/{id}', [InspectorControlador::class, 'update'])->name('inspector.update');
+            Route::delete('/inspectores/{id}', [InspectorControlador::class, 'destroy'])->name('inspector.destroy');
             Route::get('/empresas/{id}', [EmpresasControlador::class,'update'])->name('empresa.update');
+            Route::delete('/empresas/{id}', [EmpresasControlador::class, 'destroy'])->name('empresa.destroy');
 
             //PAGOS ACCIONES
             Route::get('/registrarpago',[PagosControlador::class,'create'])->name('registrar.pago');
             Route::post('/pagos/{id}', [PagosControlador::class, 'update'])->name('pago.update');
+            Route::delete('/pagos/{id}', [PagosControlador::class, 'destroy'])->name('pago.destroy');
 
             //ACTA ACCIONES
             Route::get('/guardar-actas/{id}',[ActaControlador::class,'guardaracta'])->name('guardar.actas');

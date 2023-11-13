@@ -214,8 +214,9 @@
 
         <!--CUERPO-->
         <tbody>
-                @foreach($resultados as $acta)
+                @foreach($resultados as $index => $acta)
                         <tr>
+                        <td>{{$index + 1 }}</td>   
                         <td>{{$acta->numero}}</td> 
                         <td>{{$acta->operativo->fecha}}</td>
                         <td>{{$acta->operativo->lugar}}</td>

@@ -93,6 +93,10 @@ class InspectorControlador extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $operativo = Inspector::findOrFail($id);
+        $operativo->delete();
+    
+        // Redireccionar a la página o realizar alguna acción adicional
+        return redirect()->back();
     }
 }

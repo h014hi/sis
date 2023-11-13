@@ -312,7 +312,8 @@
     <div class="col-md-12 table-responsive">
                 <table class="table" style="font-size: 75%; text-align: center;">
                     <thead class="thead-dark">
-                    <tr>
+                    <tr> 
+                        <th scope="col">ITEM</th>
                         <th scope="col">N° DE ACTA</th>
                         <th scope="col">FECHA DE INSPECCIÓN</th>
                         <th scope="col">LUGAR DE INTERVENCIÓN</th>
