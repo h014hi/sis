@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
     //Pago::factory(15)->create();
 	//Acta::factory(15)->create();
          
-    //$this->call(UserSeeder::class);
+    $this->call(UserSeeder::class);
         
         
         // \App\Models\User::factory(10)->create();

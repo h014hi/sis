@@ -246,4 +246,15 @@ class ActaControlador extends Controller
         $actas = Acta::where('operativo_id', $id)->orderBy('updated_at', 'desc')->paginate(5);
         return view('actas', ['resultados'=>$actas, 'inspectores'=>$inspectores, 'empresas'=>$empresas, 'conductores'=>$conductores, 'infracciones'=>$infracciones, 'vehiculos'=>$vehiculos, 'pagos'=>$pagos, 'id'=>$id]);
     }
+
+    // ActaControlador.php
+
+    public function destroy($id)
+    {
+        $acta = Acta::findOrFail($id);
+        $acta->delete();
+
+        return redirect()->back();
+    }
+
 }

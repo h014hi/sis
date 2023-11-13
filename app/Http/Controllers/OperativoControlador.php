@@ -87,7 +87,11 @@ class OperativoControlador extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+    {   
+        $operativo = Operativo::findOrFail($id);
+        $operativo->delete();
+    
+        // Redireccionar a la página o realizar alguna acción adicional
+        return redirect()->back();
     }
 }

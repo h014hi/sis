@@ -48,6 +48,7 @@ Route::middleware([
                 //OPERATIVOS
             Route::get('/registraroperativo',[OperativoControlador::class,'create'])->name('registrar.operativo');
             Route::post('/operativo/{id}', [OperativoControlador::class, 'update'])->name('operativo.update');
+            Route::delete('/operativo/{id}', [OperativoControlador::class, 'destroy'])->name('operativo.destroy');
             Route::get('/actas/{id}', [ActaControlador::class,'show'])->name('actasdeloperativo');
 
             //INSPECTORES Y EMPRESAS
@@ -63,6 +64,7 @@ Route::middleware([
             //ACTA ACCIONES
             Route::get('/guardar-actas/{id}',[ActaControlador::class,'guardaracta'])->name('guardar.actas');
             Route::post('/actaseditar/{id}', [ActaControlador::class, 'editaracta'])->name('acta.update');
+            Route::delete('/acta/{id}', [ActaControlador::class, 'destroy'])->name('acta.destroy');
 
             //PDF GENERAR PRUEBA
             Route::get('/generar-pdf', [PDFControlador::class, 'generarPDF']);
