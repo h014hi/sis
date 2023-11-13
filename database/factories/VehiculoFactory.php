@@ -19,8 +19,8 @@ class VehiculoFactory extends Factory
         return [
             //
             'placa'=> $this->faker->randomElement(["XUV-965","P4C-586","U95-856"]),
-            'origen'=>$this->faker->sentence(),
-            'destino'=>$this->faker->sentence(),
+            //'origen'=>$this->faker->sentence(),
+            //'destino'=>$this->faker->sentence(),
         ];
     }
 }

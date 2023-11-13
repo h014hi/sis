@@ -40,14 +40,16 @@ class ActaFactory extends Factory
         'numero'=> $this->faker->unique()->randomNumber(7),
         'ruta' =>$this->faker->randomElement(["AYAVIRI-AZANGARO","JULIACA-PUNO","ILAVE-AZANGARO", "PUNO-HUANCANE"]),
 		'retencion' => $this->faker->text(),
-        'monto'=>$this->faker->randomElement([250.15,0,555.50]),
+        //'monto'=>$this->faker->randomElement([250.15,0,555.50]),
 		'operativo_id' => $operativo->id,
         'empresa_id' =>$empresa->id,
         'inspector_id'=>$inspector->id,
         'conductor_id'=>$condcutor->id,
         'vehiculo_id'=>$vehiculo->id,
+        'categoria'=> $this->faker->randomElement(["AIIIa","AIIb","AI"]),
+        'estadolicencia'=> $this->faker->sentence(),
         'infraccion_id'=>$infraccion->id,
-        'pago_id'=>$pago->id,
+        //'pago_id'=>$pago->id,
         'observacion'=>$this->faker->text(),
         ];
     }

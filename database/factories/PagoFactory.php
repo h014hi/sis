@@ -18,6 +18,7 @@ class PagoFactory extends Factory
     {
         return [
             //
+            'tipo'=> $this->faker->randomElement(["acta","descargo","derecho-tramite"]),
             'fecha' => $this->faker->date(),
             'monto'=>$this->faker->randomElement([250.15,0,555.50]),
             'codigo'=> $this->faker->randomElement([183134,155925]),
