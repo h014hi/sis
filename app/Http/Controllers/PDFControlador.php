@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\View;
 
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Carbon\Carbon;
+
 use App\Models\Operativo;
 use App\Models\Infraccion;
 use App\Models\Empresa;
@@ -110,11 +114,12 @@ class PDFControlador extends Controller
         $templateProcessor = new TemplateProcessor($templatePath);
         
         // Establecer el idioma a español
+        Carbon::setLocale('es');
 
         $fecha_actual_timestamp = time();
 
         // Formatear la fecha en español usando strftime
-        $fecha_formateada = strftime('%d de %B de %Y', $fecha_actual_timestamp);
+        $fecha_formateada = Carbon::createFromTimestamp($fecha_actual_timestamp)->isoFormat('D [de] MMMM [de] YYYY');
 
         $templateProcessor->setValue('fechados', $fecha_formateada);
         $templateProcessor->setValue('director_circulacion', 'Abg. Javier Anibal Yapu Mamani');

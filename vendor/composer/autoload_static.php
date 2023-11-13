@@ -103,6 +103,7 @@ class ComposerStaticInit37a958e7b47160bf937e632f57611eeb
             'Psr\\Http\\Client\\' => 16,
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
+            'Psr\\Clock\\' => 10,
             'PragmaRX\\Google2FA\\' => 19,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
@@ -384,6 +385,10 @@ class ComposerStaticInit37a958e7b47160bf937e632f57611eeb
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
+        ),
         'PragmaRX\\Google2FA\\' => 
         array (
             0 => __DIR__ . '/..' . '/pragmarx/google2fa/src',
@@ -615,6 +620,7 @@ class ComposerStaticInit37a958e7b47160bf937e632f57611eeb
         'App\\Http\\Controllers\\InspectorControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/InspectorControlador.php',
         'App\\Http\\Controllers\\OperativoControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/OperativoControlador.php',
         'App\\Http\\Controllers\\PDFControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/PDFControlador.php',
+        'App\\Http\\Controllers\\PagosControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/PagosControlador.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -5490,6 +5496,7 @@ class ComposerStaticInit37a958e7b47160bf937e632f57611eeb
         'PragmaRX\\Google2FA\\Support\\Base32' => __DIR__ . '/..' . '/pragmarx/google2fa/src/Support/Base32.php',
         'PragmaRX\\Google2FA\\Support\\Constants' => __DIR__ . '/..' . '/pragmarx/google2fa/src/Support/Constants.php',
         'PragmaRX\\Google2FA\\Support\\QRCode' => __DIR__ . '/..' . '/pragmarx/google2fa/src/Support/QRCode.php',
+        'Psr\\Clock\\ClockInterface' => __DIR__ . '/..' . '/psr/clock/src/ClockInterface.php',
         'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
         'Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
