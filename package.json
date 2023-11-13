@@ -20,7 +20,8 @@
         "ajax": "^0.0.4",
         "chart.js": "^4.3.0",
         "chartjs-plugin-datalabels": "^2.2.0",
+        "laravel-mix": "^6.0.0-beta.17",
         "primevue": "^3.28.0",
-        "vue": "^3.2.47"
+        "vue": "^3.2.36"
     }
 }
