@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('infraccions', function (Blueprint $table) {
             $table->id();
             $table->char('codigo',5);
+            $table->char('tipo',15);
             $table->text('descripcion');
             $table->char('calificacion',25);
             $table->text('m_preventivas');

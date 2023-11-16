@@ -617,6 +617,7 @@ class ComposerStaticInit37a958e7b47160bf937e632f57611eeb
         'App\\Http\\Controllers\\ActaControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/ActaControlador.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EmpresasControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/EmpresasControlador.php',
+        'App\\Http\\Controllers\\InfraccionControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/InfraccionControlador.php',
         'App\\Http\\Controllers\\InspectorControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/InspectorControlador.php',
         'App\\Http\\Controllers\\OperativoControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/OperativoControlador.php',
         'App\\Http\\Controllers\\PDFControlador' => __DIR__ . '/../..' . '/app/Http/Controllers/PDFControlador.php',

@@ -19,6 +19,7 @@ class InfraccionFactory extends Factory
         return [
             //
             'codigo' => $this->faker->regexify('^[A-Z]\d{1,2}[A-Za-z]$'), // Genera códigos como "C4b"
+            'tipo' => $this->faker->randomElement(["incumplimiento", "infraccion"]),
             'descripcion' => $this->faker->text(),
             'calificacion' => $this->faker->randomElement(["LEVE", "GRAVE", "MUY GRAVE"]),
             'm_preventivas' => $this->faker->realText(20),

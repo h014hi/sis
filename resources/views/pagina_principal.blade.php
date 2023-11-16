@@ -134,7 +134,13 @@
                                 SABER MÁS DE MI INFRACCIÓN...
                             </a>
                             -->
-                            <a href="{{ route('infraccion.mostrar', ['codigo_infra' => $acta->infraccion->codigo , 'descripcion' => $acta->infraccion->descripcion , 'calificacion'=>$acta->infraccion->calificacion , 'm_preventivas'=>$acta->infraccion->m_preventivas , 'consecuencia'=>$acta->infraccion->consecuencia]) }}" class="btn btn-primary" style="background-color: #187BEC; margin: 10%; color:white;">
+                            <a href="{{ route('infraccion.mostrar', 
+                            ['infra_id'     => $acta->infraccion->id,
+                            'codigo'        => encrypt($acta->infraccion->codigo ),
+                            'tipo'          => encrypt($acta->infraccion->tipo ), 
+                            'descripcion'   => encrypt($acta->infraccion->descripcion ), 'calificacion'  => encrypt($acta->infraccion->calificacion ), 'm_preventivas' => encrypt($acta->infraccion->m_preventivas ), 'consecuencia'  => encrypt($acta->infraccion->consecuencia) ]
+                            ) }}" 
+                            class="btn btn-primary" style="background-color: #187BEC; margin: 10%; color:white;">
                                 SABER MÁS DE MI INFRACCIÓN...
                             </a>
                         </div>

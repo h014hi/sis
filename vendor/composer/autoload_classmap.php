@@ -17,6 +17,7 @@ return array(
     'App\\Http\\Controllers\\ActaControlador' => $baseDir . '/app/Http/Controllers/ActaControlador.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\EmpresasControlador' => $baseDir . '/app/Http/Controllers/EmpresasControlador.php',
+    'App\\Http\\Controllers\\InfraccionControlador' => $baseDir . '/app/Http/Controllers/InfraccionControlador.php',
     'App\\Http\\Controllers\\InspectorControlador' => $baseDir . '/app/Http/Controllers/InspectorControlador.php',
     'App\\Http\\Controllers\\OperativoControlador' => $baseDir . '/app/Http/Controllers/OperativoControlador.php',
     'App\\Http\\Controllers\\PDFControlador' => $baseDir . '/app/Http/Controllers/PDFControlador.php',

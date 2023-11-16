@@ -13,12 +13,14 @@ class InfraccionControlador extends Controller
 
     public function showInfraccion(Request $request)
     {
-        $codigo_infra = $request->input('codigo_infra');
-        $descripcion = $request->input('descripcion');
-        $calificacion = $request->input('calificacion');
-        $m_preventivas = $request->input('m_preventivas');
-        $consecuencia = $request->input('consecuencia');
+        $infra_id       = $request->input('infra_id');
+        $codigo         = decrypt($request->input('codigo'));
+        $tipo           = decrypt($request->input('tipo'));
+        $descripcion    = decrypt($request->input('descripcion'));
+        $calificacion   = decrypt($request->input('calificacion'));
+        $m_preventivas  = decrypt($request->input('m_preventivas'));
+        $consecuencia   = decrypt($request->input('consecuencia'));
 
-        return view('infraccion', compact('codigo_infra', 'descripcion', 'calificacion', 'm_preventivas','consecuencia'));
+        return view('infraccion', compact('codigo','tipo', 'descripcion', 'calificacion', 'm_preventivas','consecuencia'));
     }
 }

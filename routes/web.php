@@ -31,7 +31,7 @@ Route::get('/', function () {
 Route::get('/consulta',[ActaControlador::class,'buscar'])->name('consulta.buscar');
 
 //MOSTRAR INFRACCIONES
-Route::get('/infraccion/{codigo_infra}', [InfraccionControlador::class, 'showInfraccion'])->name('infraccion.mostrar');
+Route::get('/infraccion/{infra_id}', [InfraccionControlador::class, 'showInfraccion'])->name('infraccion.mostrar');
 
 Route::middleware([
     'auth:sanctum',
