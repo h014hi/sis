@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use Faker\Generator as faker;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;

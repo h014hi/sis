@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('infraccions', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo');
-            $table->string('codigo');
+            $table->char('codigo',5);
             $table->text('descripcion');
-            $table->float('monto');
+            $table->char('calificacion',25);
+            $table->text('m_preventivas');
+            $table->text('consecuencia');
             $table->timestamps();
         });
     }

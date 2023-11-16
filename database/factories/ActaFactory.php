@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Faker\Generator as faker;
 use App\Models\Operativo;
 use App\Models\Empresa;
 use App\Models\Inspector;
@@ -28,7 +29,7 @@ class ActaFactory extends Factory
 	    $operativo = Operativo::all()->random();
         $empresa = Empresa::all()->random();
         $inspector = Inspector::all()->random();
-        $condcutor = Conductor::all()->random();
+        $conductor = Conductor::all()->random();
         $vehiculo = Vehiculo::all()->random();
         $infraccion = Infraccion::all()->random();
         $pago = Pago::all()->random();
@@ -36,18 +37,18 @@ class ActaFactory extends Factory
 
         return [
             //
-		'estado'=> $this->faker->randomElement(["ARCHIVADO","CONDESCARGO","TRAMITADO", "NO"]),
-        'numero'=> $this->faker->unique()->randomNumber(7),
+		'estado'=> $this->faker->randomElement(["ARCHIVADO","CONDESCARGO","TRAMITADO", "DESCONOCIDO"]),
+        'numero' => str_pad($this->faker->unique()->randomNumber(7), 7, '0', STR_PAD_LEFT),
         'ruta' =>$this->faker->randomElement(["AYAVIRI-AZANGARO","JULIACA-PUNO","ILAVE-AZANGARO", "PUNO-HUANCANE"]),
-		'retencion' => $this->faker->text(),
+		'retencion' => $this->faker->randomElement(["LICENCIA","TUC","CITV", "SOAT","PLACA","NINGUNA"]),
         //'monto'=>$this->faker->randomElement([250.15,0,555.50]),
 		'operativo_id' => $operativo->id,
         'empresa_id' =>$empresa->id,
         'inspector_id'=>$inspector->id,
-        'conductor_id'=>$condcutor->id,
+        'conductor_id'=>$conductor->id,
         'vehiculo_id'=>$vehiculo->id,
-        'categoria'=> $this->faker->randomElement(["AIIIa","AIIb","AI"]),
-        'estadolicencia'=> $this->faker->sentence(),
+        'categoria'=> $this->faker->randomElement(["AIIIa","AIIb","AI","AIIIc"]),
+        'estadolicencia'=> $this->faker->randomElement(["VENCIDA","VIGENTE","EN TRAMITE","DESCONOCIDO"]),
         'infraccion_id'=>$infraccion->id,
         //'pago_id'=>$pago->id,
         'observacion'=>$this->faker->text(),

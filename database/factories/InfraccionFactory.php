@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use Faker\Generator as faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,10 +18,11 @@ class InfraccionFactory extends Factory
     {
         return [
             //
-            'tipo'=> $this->faker->randomElement(["INFRACCION","INCUMPLIMIENTO"]),
-            'codigo'=> $this->faker->sentence(),
-            'descripcion'=> $this->faker->text(),
-            'monto'=>$this->faker->randomElement([0,4]),
+            'codigo' => $this->faker->regexify('^[A-Z]\d{1,2}[A-Za-z]$'), // Genera códigos como "C4b"
+            'descripcion' => $this->faker->text(),
+            'calificacion' => $this->faker->randomElement(["LEVE", "GRAVE", "MUY GRAVE"]),
+            'm_preventivas' => $this->faker->realText(20),
+            'consecuencia' => $this->faker->realText(20),
         ];
     }
 }

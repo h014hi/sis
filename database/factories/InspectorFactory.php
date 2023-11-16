@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use Faker\Generator as faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +18,9 @@ class InspectorFactory extends Factory
     {
         return [
             //
-        'nombres'=> $this->faker->randomElement(["Juan Franco","Jorge Perez","Juan Quispe"]),
-        'apellidos'=> $this->faker->sentence(),
-        'telefono'=> $this->faker->randomElement(["916552652","987654321","910286932"]),
+        'nombres'=> $this->faker->randomElement(["Juan","Jorge","Julian"]),
+        'apellidos'=> $this->faker->realText(20),
+        'telefono'=>'9' . $this->faker->randomNumber(8),
         ];
     }
 }

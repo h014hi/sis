@@ -9,43 +9,47 @@
 @endphp
 
         <!--CUERPO-->
+        
         <tbody>
                 @foreach($resultados as $acta)
+                        <script>
+                                mostrarInfraccion('{{$acta->infraccion->codigo}}','{{$acta->infraccion->descripcion}}','{{$acta->infraccion->consecuencia}}')
+                        </script>
                         <tr>
-                        <td>{{$acta->numero}}</td>
-                        <td>{{$acta->operativo->fecha}}</td>
-                        <td>{{$acta->operativo->lugar}}</td>
-                        <td>{{$acta->conductor->nombres}} {{$acta->conductor->apellidos}}</td>
-                        <td>{{$acta->vehiculo->placa}}</td>
-                        <td>{{$acta->infraccion->codigo}}</td>
-                        <td>{{$acta->infraccion->descripcion}}</td>
-                        <td>{{$acta->observacion}}</td>
+                                <td>{{$acta->numero}}</td>
+                                <td>{{$acta->operativo->fecha}}</td>
+                                <td>{{$acta->operativo->lugar}}</td>
+                                <td>{{$acta->conductor->nombres}} {{$acta->conductor->apellidos}}</td>
+                                <td>{{$acta->vehiculo->placa}}</td>
+                                <td><a href="#" onclick="mostrarInfraccion('{{$acta->infraccion->codigo}}','{{$acta->infraccion->descripcion}}','{{$acta->infraccion->consecuencia}}')" id="mInfraccion">{{$acta->infraccion->codigo}}</a></td>
+                                <td>{{$acta->infraccion->descripcion}}</td>
+                                <td>{{$acta->observacion}}</td>
 
-                        @php
-                                // en caso de paros o huelgas o feriados
+                                @php
+                                        // en caso de paros o huelgas o feriados
 
-                                $dias_aumentados = $acta->operativo->diashabiles;
-                                $nuevaFecha = date('Y-m-d', strtotime($acta->operativo->fecha . ' + ' . strval($dias_aumentados) . ' days'));        
-                                $nuevaFecha = date('Y-m-d', strtotime($nuevaFecha . ' + 5 days'));
-                                
-                                // en caso de sabados y domingos
-                                $sabados_domingos = 0;
-                                $fechaActual = date('Y-m-d', strtotime($acta->operativo->fecha . ' + 0 days'));
+                                        $dias_aumentados = $acta->operativo->diashabiles;
+                                        $nuevaFecha = date('Y-m-d', strtotime($acta->operativo->fecha . ' + ' . strval($dias_aumentados) . ' days'));        
+                                        $nuevaFecha = date('Y-m-d', strtotime($nuevaFecha . ' + 5 days'));
+                                        
+                                        // en caso de sabados y domingos
+                                        $sabados_domingos = 0;
+                                        $fechaActual = date('Y-m-d', strtotime($acta->operativo->fecha . ' + 0 days'));
 
-                                //contando cuantos sabados y domingos hay para sumarlos
-                                while ($fechaActual <= $nuevaFecha) {
-                                        $diaSemana = date('N', strtotime($fechaActual));
-                                        if ($diaSemana == 6 || $diaSemana == 7) {
-                                                $sabados_domingos++;
+                                        //contando cuantos sabados y domingos hay para sumarlos
+                                        while ($fechaActual <= $nuevaFecha) {
+                                                $diaSemana = date('N', strtotime($fechaActual));
+                                                if ($diaSemana == 6 || $diaSemana == 7) {
+                                                        $sabados_domingos++;
+                                                }
+                                                $fechaActual = date('Y-m-d', strtotime($fechaActual . ' + 1 days'));
                                         }
-                                        $fechaActual = date('Y-m-d', strtotime($fechaActual . ' + 1 days'));
-                                }
 
-                                $nuevaFecha = date('Y-m-d', strtotime($nuevaFecha . ' + ' . strval($sabados_domingos) . ' days')); 
+                                        $nuevaFecha = date('Y-m-d', strtotime($nuevaFecha . ' + ' . strval($sabados_domingos) . ' days')); 
 
-                                $fechaHoy = date('Y-m-d');
+                                        $fechaHoy = date('Y-m-d');
 
-                        @endphp
+                                @endphp
                                 
                                
                                         @if($acta->estado == "ARCHIVADO")
@@ -75,5 +79,12 @@
                                         @endif
                                 
                         </tr>    
-                @endforeach               
+                @endforeach
+                
+                
         </tbody>
+        <!--
+        <div class="col-md-3">
+                <button type="submit" class="btn btn-primary" style = "background-color: #187BEC; margin: 10%;">SABER MAS DE MI INFRACION....</button>
+        </div>
+        -->

@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use Faker\Generator as faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,7 +16,7 @@ class ConductorFactory extends Factory
      */
     public function definition(): array
     {
-        $letraInicial = $this->faker->randomElement(['a', 'u', 'q']); // Puedes agregar más letras según tus necesidades
+        $letraInicial = $this->faker->randomElement(['A', 'U', 'Q']); // Puedes agregar más letras según tus necesidades
         $numeros = $this->faker->randomNumber(8);
         return [
             //

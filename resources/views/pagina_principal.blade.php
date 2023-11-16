@@ -81,55 +81,55 @@
             
             <div class=" col-md-12 table-responsive">
 
-            <table class="table" style="font-size: 75%; text-align: center;">
-        
-                    <!--CABECERA-->
-                    <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">N° DE ACTA DE CONTROL</th>
-                                <th scope="col">FECHA DE INTERVENCION</th>
-                                <th scope="col">LUGAR DE INTERVENCIÓN</th>
-                                <th scope="col">CONDUCTOR INTERVENIDO</th>
-                                <th scope="col">PLACA DEL VEHICULO</th>
-                                <th scope="col">CODIGO DE INFRACCION Y/O INCUMPLIMIENTO</th>
-                                <th scope="col">DESCRIPCION</th>
-                                <th scope="col">AVISO</th>
-                                <th scope="col">ESTADO</th>
-                            </tr>
-                    </thead>
+                <table class="table" style="font-size: 75%; text-align: center;">
+            
+                        <!--CABECERA-->
+                        <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">N° DE ACTA DE CONTROL</th>
+                                    <th scope="col">FECHA DE INTERVENCION</th>
+                                    <th scope="col">LUGAR DE INTERVENCIÓN</th>
+                                    <th scope="col">CONDUCTOR INTERVENIDO</th>
+                                    <th scope="col">PLACA DEL VEHICULO</th>
+                                    <th scope="col">CODIGO DE INFRACCION Y/O INCUMPLIMIENTO</th>
+                                    <th scope="col">DESCRIPCION</th>
+                                    <th scope="col">AVISO</th>
+                                    <th scope="col">ESTADO</th>
+                                </tr>
+                        </thead>
 
-            @if(isset($resultados) && count($resultados) > 0)
-                
-                <!--TABLA DE ACTAS-->
-                    <x-z01_tabla_actas :resultados="$resultados"/>
+                @if(isset($resultados) && count($resultados) > 0)
+                    
+                    <!--TABLA DE ACTAS-->
+                        <x-z01_tabla_actas :resultados="$resultados"/>
 
-            @else
-                @if(isset($mensaje) && count($mensaje) > 0)
-                    <script>
-                        // Función para mostrar una alerta personalizada
-                        function mostrarAlerta(conflicto,mensaje) {
-                            Swal.fire({
-                            title:conflicto,
-                            text: mensaje,
-                            icon: 'error',
-                            confirmButtonText: 'Aceptar',
-                            customClass: {
-                                popup: 'mi-alerta',
-                                title: 'mi-titulo',
-                                confirmButton: 'mi-boton'
+                @else
+                    @if(isset($mensaje) && count($mensaje) > 0)
+                        <script>
+                            // Función para mostrar una alerta personalizada
+                            function mostrarAlerta(conflicto,mensaje) {
+                                Swal.fire({
+                                title:conflicto,
+                                text: mensaje,
+                                icon: 'error',
+                                confirmButtonText: 'Aceptar',
+                                customClass: {
+                                    popup: 'mi-alerta',
+                                    title: 'mi-titulo',
+                                    confirmButton: 'mi-boton'
+                                }
+                                });
                             }
-                            });
-                        }
-                        mostrarAlerta('{{$mensaje[0]}}','{{$mensaje[1]}}');
-                    </script>
+                            mostrarAlerta('{{$mensaje[0]}}','{{$mensaje[1]}}');
+                        </script>
+                    @endif
                 @endif
-            @endif
 
-            </table>
-
+                </table>
+                
             </div>
-
         </div>
+        
     </body>
 </html>
 

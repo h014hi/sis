@@ -22,7 +22,7 @@ use App\Http\Controllers\Controller;
 
 Route::get('/', function () {
     return view('pagina_principal');
-});
+})->name('home');
 
 
 
@@ -74,6 +74,10 @@ Route::middleware([
             Route::post('/generarreporte', [PDFControlador::class, 'generarreporte'])->name('generar.reporte');
             Route::get('/ifiactas/{id}', [PDFControlador::class, 'generarDocumento'])->name('ifi');
 
+            //CONSULTA ADMIN
+            Route::get('/busqueda', [ActaControlador::class, 'buscar2'])->name('busqueda');
+
+            
             //AUTOAPI APIS SIMPLES
             Route::get('/empresasreport', [Controller::class, 'empresas']);
             Route::get('/conductores/{id}', [Controller::class, 'conductor']);

@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use Faker\Generator as faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
