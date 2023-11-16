@@ -104,7 +104,7 @@
                     }
 
                     tr:last-child td {
-                        border-bottom: 1px solid black; /* Elimina el borde inferior de la última fila de datos */
+                        border-bottom: 0px solid black; /* Elimina el borde inferior de la última fila de datos */
                     }
                 </style>
                 
