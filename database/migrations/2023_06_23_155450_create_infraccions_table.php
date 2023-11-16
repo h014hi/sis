@@ -19,6 +19,8 @@ return new class extends Migration
             $table->char('calificacion',25);
             $table->text('m_preventivas');
             $table->text('consecuencia');
+            $table->decimal('importe',10,2);
+            $table->boolean('descuento');
             $table->timestamps();
         });
     }

@@ -129,18 +129,17 @@
                 </table>
                 @if(isset($resultados) && count($resultados) > 0)
                     @foreach($resultados as $acta)
-                        <div class="col-md-3">
-                            <!-- <a href="" class="btn btn-primary" style="background-color: #187BEC; margin: 10%; color:white;">
-                                SABER MÁS DE MI INFRACCIÓN...
-                            </a>
-                            -->
+                        <div class="container w-25" >
                             <a href="{{ route('infraccion.mostrar', 
                             ['infra_id'     => $acta->infraccion->id,
                             'codigo'        => encrypt($acta->infraccion->codigo ),
                             'tipo'          => encrypt($acta->infraccion->tipo ), 
-                            'descripcion'   => encrypt($acta->infraccion->descripcion ), 'calificacion'  => encrypt($acta->infraccion->calificacion ), 'm_preventivas' => encrypt($acta->infraccion->m_preventivas ), 'consecuencia'  => encrypt($acta->infraccion->consecuencia) ]
+                            'descripcion'   => encrypt($acta->infraccion->descripcion ), 'calificacion'  => encrypt($acta->infraccion->calificacion ), 'm_preventivas' => encrypt($acta->infraccion->m_preventivas ), 'consecuencia'  => encrypt($acta->infraccion->consecuencia),
+                            'importe'       => encrypt($acta->infraccion->importe),
+                            'descuento'     => $acta->infraccion->importe,
+                            ]
                             ) }}" 
-                            class="btn btn-primary" style="background-color: #187BEC; margin: 10%; color:white;">
+                            class="btn btn-info w-100">
                                 SABER MÁS DE MI INFRACCIÓN...
                             </a>
                         </div>

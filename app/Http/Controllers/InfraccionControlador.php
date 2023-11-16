@@ -20,7 +20,9 @@ class InfraccionControlador extends Controller
         $calificacion   = decrypt($request->input('calificacion'));
         $m_preventivas  = decrypt($request->input('m_preventivas'));
         $consecuencia   = decrypt($request->input('consecuencia'));
+        $importe        = decrypt($request->input('importe'));
+        $descuento      = $request->input('descuento');
 
-        return view('infraccion', compact('codigo','tipo', 'descripcion', 'calificacion', 'm_preventivas','consecuencia'));
+        return view('infraccion', compact('codigo','tipo', 'descripcion', 'calificacion', 'm_preventivas','consecuencia','importe','descuento'));
     }
 }

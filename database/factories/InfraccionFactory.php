@@ -24,6 +24,8 @@ class InfraccionFactory extends Factory
             'calificacion' => $this->faker->randomElement(["LEVE", "GRAVE", "MUY GRAVE"]),
             'm_preventivas' => $this->faker->realText(20),
             'consecuencia' => $this->faker->realText(20),
+            'importe' => $this->faker->randomElement([495.00,2475.00,4950.00,247.50]),
+            'descuento' => $this->faker->randomElement([0,1])
         ];
     }
 }
