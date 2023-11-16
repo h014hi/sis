@@ -44,11 +44,11 @@
         </style>
 
 
-        
+
     </head>
     <body class=" container col-md-12">
         <div class="col-md-12">
-                
+
                 <x-navfiscalizacion/>
 
 
@@ -70,19 +70,19 @@
             <div class="col-md-12">
             <p class="text-center" style="font-size: 130%;"><b>VERIFICA TU INFRACCION</b></p>
             <br>
-            
+
 
             </div>
 
             <!--FORMULARIO DE CONSULTA-->
             <div class="col-md-12">
-                <x-z02_formulario_consulta/>          
+                <x-z02_formulario_consulta/>
             </div>
-            
+
             <div class=" col-md-12 table-responsive">
 
                 <table class="table" style="font-size: 75%; text-align: center;">
-            
+
                         <!--CABECERA-->
                         <thead class="thead-dark">
                                 <tr>
@@ -99,9 +99,10 @@
                         </thead>
 
                 @if(isset($resultados) && count($resultados) > 0)
-                    
+
                     <!--TABLA DE ACTAS-->
-                        <x-z01_tabla_actas :resultados="$resultados"/>
+                        <x-z01_tabla_actas :resultados="$resultados"></x-z01_tabla_actas>
+
 
                 @else
                     @if(isset($mensaje) && count($mensaje) > 0)
@@ -126,10 +127,22 @@
                 @endif
 
                 </table>
-                
+                @if(isset($resultados) && count($resultados) > 0)
+                    @foreach($resultados as $acta)
+                        <div class="col-md-3">
+                            <!-- <a href="" class="btn btn-primary" style="background-color: #187BEC; margin: 10%; color:white;">
+                                SABER MÁS DE MI INFRACCIÓN...
+                            </a>
+                            -->
+                            <a href="{{ route('infraccion.mostrar', ['codigo_infra' => $acta->infraccion->codigo , 'descripcion' => $acta->infraccion->descripcion , 'calificacion'=>$acta->infraccion->calificacion , 'm_preventivas'=>$acta->infraccion->m_preventivas , 'consecuencia'=>$acta->infraccion->consecuencia]) }}" class="btn btn-primary" style="background-color: #187BEC; margin: 10%; color:white;">
+                                SABER MÁS DE MI INFRACCIÓN...
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
-        
+
     </body>
 </html>
 

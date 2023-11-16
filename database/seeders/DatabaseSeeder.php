@@ -32,10 +32,10 @@ class DatabaseSeeder extends Seeder
     Infraccion::factory(10)->create();
     Pago::factory(15)->create();
 	Acta::factory(15)->create();
-         
-    //$this->call(UserSeeder::class);
-    
-        
+
+    $this->call(UserSeeder::class);
+
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

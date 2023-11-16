@@ -5,6 +5,7 @@ use App\Http\Controllers\UsuarioCController;
 use App\Http\Controllers\ActaControlador;
 use App\Http\Controllers\OperativoControlador;
 use App\Http\Controllers\InspectorControlador;
+use App\Http\Controllers\InfraccionControlador;
 use App\Http\Controllers\EmpresasControlador;
 use App\Http\Controllers\PDFControlador;
 use App\Http\Controllers\PagosControlador;
@@ -29,6 +30,8 @@ Route::get('/', function () {
 //consulta con especificaciones
 Route::get('/consulta',[ActaControlador::class,'buscar'])->name('consulta.buscar');
 
+//MOSTRAR INFRACCIONES
+Route::get('/infraccion/{codigo_infra}', [InfraccionControlador::class, 'showInfraccion'])->name('infraccion.mostrar');
 
 Route::middleware([
     'auth:sanctum',
@@ -69,6 +72,8 @@ Route::middleware([
             Route::post('/actaseditar/{id}', [ActaControlador::class, 'editaracta'])->name('acta.update');
             Route::delete('/acta/{id}', [ActaControlador::class, 'destroy'])->name('acta.destroy');
 
+
+
             //PDF GENERAR PRUEBA
             Route::get('/generar-pdf', [PDFControlador::class, 'generarPDF']);
             Route::post('/generarreporte', [PDFControlador::class, 'generarreporte'])->name('generar.reporte');
@@ -77,7 +82,7 @@ Route::middleware([
             //CONSULTA ADMIN
             Route::get('/busqueda', [ActaControlador::class, 'buscar2'])->name('busqueda');
 
-            
+
             //AUTOAPI APIS SIMPLES
             Route::get('/empresasreport', [Controller::class, 'empresas']);
             Route::get('/conductores/{id}', [Controller::class, 'conductor']);

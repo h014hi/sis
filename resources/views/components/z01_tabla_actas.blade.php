@@ -9,7 +9,7 @@
 @endphp
 
         <!--CUERPO-->
-        
+
         <tbody>
                 @foreach($resultados as $acta)
                         <script>
@@ -29,9 +29,9 @@
                                         // en caso de paros o huelgas o feriados
 
                                         $dias_aumentados = $acta->operativo->diashabiles;
-                                        $nuevaFecha = date('Y-m-d', strtotime($acta->operativo->fecha . ' + ' . strval($dias_aumentados) . ' days'));        
+                                        $nuevaFecha = date('Y-m-d', strtotime($acta->operativo->fecha . ' + ' . strval($dias_aumentados) . ' days'));
                                         $nuevaFecha = date('Y-m-d', strtotime($nuevaFecha . ' + 5 days'));
-                                        
+
                                         // en caso de sabados y domingos
                                         $sabados_domingos = 0;
                                         $fechaActual = date('Y-m-d', strtotime($acta->operativo->fecha . ' + 0 days'));
@@ -45,13 +45,13 @@
                                                 $fechaActual = date('Y-m-d', strtotime($fechaActual . ' + 1 days'));
                                         }
 
-                                        $nuevaFecha = date('Y-m-d', strtotime($nuevaFecha . ' + ' . strval($sabados_domingos) . ' days')); 
+                                        $nuevaFecha = date('Y-m-d', strtotime($nuevaFecha . ' + ' . strval($sabados_domingos) . ' days'));
 
                                         $fechaHoy = date('Y-m-d');
 
                                 @endphp
-                                
-                               
+
+
                                         @if($acta->estado == "ARCHIVADO")
                                                 <td > <div style="color: white; background-color: #89f13a; padding: 1em;"><b>Archivado PAS</b></div></td>
                                         @else
@@ -77,14 +77,9 @@
                                                         @endif
                                                 @endif
                                         @endif
-                                
-                        </tr>    
+
+                        </tr>
                 @endforeach
-                
-                
+
+
         </tbody>
-        <!--
-        <div class="col-md-3">
-                <button type="submit" class="btn btn-primary" style = "background-color: #187BEC; margin: 10%;">SABER MAS DE MI INFRACION....</button>
-        </div>
-        -->
