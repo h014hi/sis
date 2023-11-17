@@ -21,7 +21,8 @@
                                 <td>{{$acta->operativo->lugar}}</td>
                                 <td>{{$acta->conductor->nombres}} {{$acta->conductor->apellidos}}</td>
                                 <td>{{$acta->vehiculo->placa}}</td>
-                                <td><a href="#" onclick="mostrarInfraccion('{{$acta->infraccion->codigo}}','{{$acta->infraccion->descripcion}}','{{$acta->infraccion->consecuencia}}')" id="mInfraccion">{{$acta->infraccion->codigo}}</a></td>
+                                <!-- <td><a href="#" onclick="mostrarInfraccion('{{$acta->infraccion->codigo}}','{{$acta->infraccion->descripcion}}','{{$acta->infraccion->consecuencia}}')" id="mInfraccion">{{$acta->infraccion->codigo}}</a></td> -->
+                                <td>{{$acta->infraccion->codigo}}</td>
                                 <td>{{$acta->infraccion->descripcion}}</td>
                                 <td>{{$acta->observacion}}</td>
 

@@ -36,18 +36,20 @@
         <div class="col-md-12">
             <x-navfiscalizacion/>
         </div>
+
         <article class="container">
             <div class="m_container">
                 @php
                     $w_temp ;
-                    if ($tipo == 'infraccion') {
+                    if ($infrac->tipo == 'infraccion') {
                         $w_temp = "una";
+                        
                     } else {
                         $w_temp = "un";
                     }
                 @endphp
 
-                <p class="m_infrac">Usted ha cometido {{$w_temp}} <b>{{ $tipo }}</b>  tipificada con codigo: <b>{{ $codigo  }}</b> , puede ver los detalles de su {{$tipo}} en la siguiente tabla.</p>
+                <p class="m_infrac">Usted ha cometido {{$w_temp}} <b>{{ $infrac->tipo }}</b>  tipificada con codigo: <b>{{ $infrac->codigo  }}</b> , puede ver los detalles de su {{$infrac->tipo}} en la siguiente tabla.</p>
             </div>
 
             <div>
@@ -63,13 +65,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ $codigo }}</td>
-                            <td>{{ $calificacion }}</td>
-                            <td>{{ $consecuencia }}</td>
-                            <td>{{ $importe }}</td>
+                            <td>{{ $infrac->codigo }}</td>
+                            <td>{{ $infrac->calificacion }}</td>
+                            <td>{{ $infrac->consecuencia }}</td>
+                            <td>{{ $infrac->importe }}</td>
 
-                            @if( $descuento==true)
-                                <td>{{ $importe/2 }}</td>
+                            @if( $infrac->descuento==true)
+                                <td>{{ $infrac->importe/2 }}</td>
                             @else
                                 {{ $nsa_temp= true }}
                                 <td> NSA ***</td>
@@ -94,6 +96,7 @@
                 </p>
             </div>         
         </article>
+        
     </body>
     <style>
         table {

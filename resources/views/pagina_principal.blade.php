@@ -127,18 +127,25 @@
                 @endif
 
                 </table>
+                
                 @if(isset($resultados) && count($resultados) > 0)
                     @foreach($resultados as $acta)
                         <div class="container w-25" >
-                            <a href="{{ route('infraccion.mostrar', 
-                            ['infra_id'     => $acta->infraccion->id,
-                            'codigo'        => encrypt($acta->infraccion->codigo ),
-                            'tipo'          => encrypt($acta->infraccion->tipo ), 
-                            'descripcion'   => encrypt($acta->infraccion->descripcion ), 'calificacion'  => encrypt($acta->infraccion->calificacion ), 'm_preventivas' => encrypt($acta->infraccion->m_preventivas ), 'consecuencia'  => encrypt($acta->infraccion->consecuencia),
-                            'importe'       => encrypt($acta->infraccion->importe),
-                            'descuento'     => $acta->infraccion->importe,
-                            ]
-                            ) }}" 
+                            @php
+                                $infraccion_data = [
+                                    'infra_id'      => $acta->infraccion->id,
+                                    'codigo'        => $acta->infraccion->codigo,
+                                    'tipo'          => $acta->infraccion->tipo,
+                                    'descripcion'   => $acta->infraccion->descripcion,
+                                    'calificacion'  => $acta->infraccion->calificacion,
+                                    'm_preventivas' => $acta->infraccion->m_preventivas,
+                                    'consecuencia'  => $acta->infraccion->consecuencia,
+                                    'importe'       => $acta->infraccion->importe,
+                                    'descuento'     => $acta->infraccion->descuento,
+                                ];
+                                $infra_data_cypher = encrypt(json_encode($infraccion_data));
+                            @endphp 
+                            <a href="{{ route('infraccion.mostrar',['data_infrac'=>$infra_data_cypher]) }}" 
                             class="btn btn-info w-100">
                                 SABER MÁS DE MI INFRACCIÓN...
                             </a>
