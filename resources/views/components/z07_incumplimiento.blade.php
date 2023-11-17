@@ -1,7 +1,7 @@
 <table>
     <thead>
         <tr>
-            <th>Código de Infracción</th>
+            <th>Código:</th>
             <th>Calificación</th>
             <th>Consecuencia</th>
         </tr>

@@ -16,16 +16,21 @@ class ConductorFactory extends Factory
      */
     public function definition(): array
     {
-        $letraInicial = $this->faker->randomElement(['A', 'U', 'Q']); // Puedes agregar más letras según tus necesidades
-        $numeros = $this->faker->randomNumber(8);
+        $letraLicencia = $this->faker->randomElement(['A', 'U', 'Q']);
+        $numerosDNI = $this->faker->randomNumber(8);
+
+        // Asegurar que el DNI tenga siempre 8 dígitos llenando con ceros a la izquierda
+        $dni = str_pad($numerosDNI, 8, '0', STR_PAD_LEFT);
+
+        $licencia = $letraLicencia . $dni;
+
         return [
-            //
-            'nombres'   => $this->faker->randomElement(["HENRY","JUAN","PEDRO", "SAMUEL"]),
-            'apellidos'=> $this->faker->randomElement(["QUISPE","ANASTACIO","HUARAYA", "LOPEZ"]),
-            'dni'=> $this->faker->unique()->randomNumber(8),
-            'licencia' => strtoupper($letraInicial . str_pad($numeros, 8, '0', STR_PAD_LEFT)),
-            //'categoria'=> $this->faker->randomElement(["AIIIa","AIIb","AI"]),
-            //'estado'=> $this->faker->sentence(),
+            'nombres' => $this->faker->randomElement(["HENRY", "JUAN", "PEDRO", "SAMUEL"]),
+            'apellidos' => $this->faker->randomElement(["QUISPE", "ANASTACIO", "HUARAYA", "LOPEZ"]),
+            'dni' => $dni,
+            'licencia' => strtoupper($licencia),
+            //'categoria' => $this->faker->randomElement(["AIIIa", "AIIb", "AI"]),
+            //'estado' => $this->faker->sentence(),
         ];
-    }
+        }
 }
