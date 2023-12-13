@@ -1,4 +1,4 @@
-    
+
 <!--BOTONES DE ACCIONAR REGISTRAR GENERAR PDF GENERAR EXCEL-->
     <div class="col-md-12">
         <!-- Botón o enlace que abre el modal -->
@@ -15,8 +15,8 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
-            <div class="modal-body">  
+
+            <div class="modal-body">
                 <form id="formulario" action="{{ route('guardar-datos') }}" method="GET">
                 @csrf
                  <div class="space-y-3 mb-4">
@@ -24,7 +24,7 @@
                     <div class="space-y-3">
                         <div class="space-y-3 mb-4">
                             <h2 class="font-bold">Datos del Inspector</h2>
-                        <div class="space-x-3 flex justify-between">  
+                        <div class="space-x-3 flex justify-between">
                                 <div class="flex-1 space-y-3">
                                     <label for="">Nombres</label>
                                     <input type="text" name="nombres" id="nombres"
@@ -39,14 +39,14 @@
                                 </div>
                             </div>
                             </div>
-                    </div>       
+                    </div>
         </div>
 
         <div class="space-y-3 mb-4">
         <h2 class="font-bold">ESTADO DEL INSPECTOR</h2>
-        <div class="space-x-3 flex justify-between">  
+        <div class="space-x-3 flex justify-between">
             <div class="flex-1 space-y-3">
-                    <label for="">ESTA HABILITADO PARA TRABAJO DE CAMPO (SI/NO)</label>
+                    <label for="">ESTA ACREDITADO PARA TRABAJO DE CAMPO (SI/NO)</label>
                     <input type="text" name="telefono" id="telefono"
                         class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         value="SI">
@@ -69,7 +69,7 @@
 
 <div class="table-responsive">
         <table class="table" style="font-size: 75%; text-align: center;">
-                
+
             <!--CABECERA-->
             <thead class="thead-dark">
                     <tr>
@@ -89,12 +89,12 @@
                             <td>{{$inspector->nombres}}</td>
                             <td>{{$inspector->apellidos}}</td>
                             @if($inspector->telefono == "SI")
-                                <td><span class="badge bg-success" style="font-size: 100%">HABILITADO</span></td>
+                                <td><span class="badge bg-success" style="font-size: 100%">ACREDITADO</span></td>
                             @else
-                                <td><span class="badge bg-danger" style="font-size: 100%">NO HABILITADO</span></td>
+                                <td><span class="badge bg-danger" style="font-size: 100%">NO ACREDITADO</span></td>
                             @endif
                             <td>
-                                
+
                                 <a class="btn btn-warning" data-toggle="modal" data-target="#myModalEdit" onclick="editar_inspector(
                                     {{json_encode($inspector->id)}},
                                     {{json_encode($inspector->nombres)}},
@@ -117,9 +117,9 @@
                                     </button>
                                 </form>
                                 -->
-                            </td>        
-                            </tr>    
-                    @endforeach               
+                            </td>
+                            </tr>
+                    @endforeach
             </tbody>
         </table>
 
@@ -138,8 +138,8 @@
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    
-    <div class="modal-body">  
+
+    <div class="modal-body">
         <form id="formularioid" action="" method="">
             @csrf
          <div class="space-y-3 mb-4">
@@ -147,7 +147,7 @@
             <div class="space-y-3">
                 <div class="space-y-3 mb-4">
                     <h2 class="font-bold">Datos del Inspector</h2>
-                <div class="space-x-3 flex justify-between">  
+                <div class="space-x-3 flex justify-between">
                         <div class="flex-1 space-y-3">
                             <label for="">Nombres</label>
                             <input type="text" name="nombres" id="nombresedit"
@@ -162,14 +162,14 @@
                         </div>
                     </div>
                     </div>
-            </div>       
+            </div>
 </div>
 
 <div class="space-y-3 mb-4">
 <h2 class="font-bold">ESTADO DEL INSPECTOR</h2>
-<div class="space-x-3 flex justify-between">  
+<div class="space-x-3 flex justify-between">
     <div class="flex-1 space-y-3">
-            <label for="">ESTA HABILITADO PARA TRABAJO DE CAMPO (SI/NO)</label>
+            <label for="">ESTA ACREDITADO PARA TRABAJO DE CAMPO (SI/NO)</label>
             <input type="text" name="telefono" id="telefonoedit"
                 class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ingrese telefono">
@@ -193,12 +193,12 @@
 <script>
     function editar_inspector(id,nombres,apellidos,telefono)
         {
-        
+
             var ruta = "{{ route('inspector.update', ['id' => ':id']) }}";
             ruta = ruta.replace(':id', id);
             document.getElementById("formularioid").action = ruta;
-            document.getElementById("nombresedit").value = nombres;     
-            document.getElementById("apellidosedit").value = apellidos;  
+            document.getElementById("nombresedit").value = nombres;
+            document.getElementById("apellidosedit").value = apellidos;
             document.getElementById("telefonoedit").value = telefono;
         }
 

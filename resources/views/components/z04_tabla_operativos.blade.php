@@ -134,7 +134,7 @@
 
 
 <div class="table-responsive">
-<table class="table" style="font-size: 75%; text-align: center;">
+<table class="table" style="font-size: 80%; text-align: center;">
 
                     <!--CABECERA-->
                     <thead class="thead-dark">
@@ -148,7 +148,7 @@
                                 <th scope="col">TRAMITADOS</th>
                                 <th scope="col">PENDIENTES</th>
                                 <th scope="col">+ DIAS</th>
-                                <th scope="col">ACCIONES</th>
+                                <th scope="col" style="width: 13em;">ACCIONES</th>
                             </tr>
                     </thead>
 
