@@ -66,7 +66,7 @@ class ActaControlador extends Controller
         $tipo = $request->input('tipo');
         $fecha = $request->input('fecha');
 
-        //TENGO QUE REALIZAR CONSULTA CON FECHA LA FECHA LO TRAE DE OPERATIVO 
+        //TENGO QUE REALIZAR CONSULTA CON FECHA LA FECHA LO TRAE DE OPERATIVO
         if($fecha === NULL)
         {
             if ($tipo === "tipo1" and strlen($numero) === 8){
@@ -80,7 +80,7 @@ class ActaControlador extends Controller
                 else
                 {
                     return view('pagina_principal',['mensaje'=>['No se ha encontrado ninguna acta de control asociada a este número de DNI.','Si la intervención tuvo lugar hoy, verifique en el sistema después de transcurridas 24 horas o acérquese a la oficina de la Subdirección de Fiscalización.']]);
-                }  
+                }
             }
             else if ($tipo==="tipo2"){
 
@@ -106,7 +106,7 @@ class ActaControlador extends Controller
                 else
                 {
                     return view('pagina_principal',['mensaje'=>['No se ha encontrado ninguna acta de control asociada a esta placa vehicular','Si la intervención tuvo lugar hoy, verifique en el sistema después de transcurridas 24 horas o acérquese a la oficina de la Subdirección de Fiscalización.']]);
-                } 
+                }
             }
             else
             {
@@ -122,20 +122,20 @@ class ActaControlador extends Controller
                 $operativo = Operativo::where('fecha', $fecha)->first();
                 if($conductor and $operativo)
                 {
-                
+
                 $actas = Acta::where('conductor_id', $conductor->id)->where('operativo_id',$operativo->id)->get();
                 return  view('pagina_principal',['resultados'=> $actas]);
                 }
                 else
                 {
                     return view('pagina_principal',['mensaje'=>['No se ha encontrado ninguna acta de control asociada a esta fecha','Si la intervención tuvo lugar hoy, verifique en el sistema después de transcurridas 24 horas o acérquese a la oficina de la Subdirección de Fiscalización.']]);
-                }  
+                }
             }
             else if ($tipo==="tipo2"){
 
                 $actas = Acta::where('numero', $numero)->first();
                 $operativo = Operativo::where('fecha', $fecha)->first();
-                
+
                 if($actas and $operativo)
                 {
                     $actas = Acta::where('numero', $numero)->where('operativo_id',$operativo->id)->get();
@@ -159,7 +159,7 @@ class ActaControlador extends Controller
                 else
                 {
                     return view('pagina_principal',['mensaje'=>['No se ha encontrado ninguna acta de control asociada a esta fecha','Si la intervención tuvo lugar hoy, verifique en el sistema después de transcurridas 24 horas o acérquese a la oficina de la Subdirección de Fiscalización.']]);
-                } 
+                }
             }
             else
             {
@@ -171,9 +171,9 @@ class ActaControlador extends Controller
 
     public function guardaracta(Request $request,string $id)
     {
-        
+
         $nuevo_acta = new Acta;
-        
+
         $vehiculo = Vehiculo::where('placa',$request->input('placa'))->first();
         if($vehiculo)
         {
@@ -184,7 +184,7 @@ class ActaControlador extends Controller
             $nuevo_vehiculo = new Vehiculo;
             $nuevo_vehiculo->placa = $request->input('placa');
             $nuevo_vehiculo->save();
-            
+
             $a = Vehiculo::where('placa',$request->input('placa'))->first();
             $nuevo_acta->vehiculo()->associate($a);
 
@@ -255,7 +255,7 @@ class ActaControlador extends Controller
         $vehiculo->save();
 
         $upacta->save();
-       
+
 
         // Puedes devolver una respuesta adecuada, como un mensaje de éxito
         return redirect()->back();

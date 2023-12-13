@@ -33,11 +33,11 @@ class EmpresasControlador extends Controller
             if ($tipo === "tipo1"){
                 $buscar1 = Empresa::where('razon_social', $razon)->first();
                 return  view('empresas',['buscar1'=> $buscar1]);
-                }     
+                }
             else if ($tipo==="tipo2" and strlen($ruc) === 11){
                 $buscar2 = Empresa::where('ruc', $ruc)->first();
                 return  view('empresas',['buscar2'=> $buscar2]);
-                }     
+                }
     }
     /**
      * Store a newly created resource in storage.
@@ -47,7 +47,7 @@ class EmpresasControlador extends Controller
         $request->validate([
             'razon_social'=> 'required',
             'nombres_rep_legal' => 'required',
-            'apellidos_rep_legal' => 'required', 
+            'apellidos_rep_legal' => 'required',
             'dni_rep_legal' => 'required',
             'numero_celular' => 'required',
             'ruc' => 'required',
@@ -74,7 +74,7 @@ class EmpresasControlador extends Controller
      */
     public function show(string $id)
     {
-        
+
     }
 
     /**
@@ -82,7 +82,7 @@ class EmpresasControlador extends Controller
      */
     public function edit(string $id)
     {
-        
+
     }
 
     /**
@@ -93,7 +93,7 @@ class EmpresasControlador extends Controller
         $request->validate([
             'razon_social'=> 'required',
             'nombres_rep_legal' => 'required',
-            'apellidos_rep_legal' => 'required', 
+            'apellidos_rep_legal' => 'required',
             'dni_rep_legal' => 'required',
             'numero_celular' => 'required',
             'ruc' => 'required',
@@ -120,9 +120,9 @@ class EmpresasControlador extends Controller
      */
     public function destroy(string $id)
     {
-        $operativo = Empresa::findOrFail($id);
-        $operativo->delete();
-    
+        $empresa = Empresa::findOrFail($id);
+        $empresa->delete();
+
         // Redireccionar a la página o realizar alguna acción adicional
         return redirect()->back();
     }

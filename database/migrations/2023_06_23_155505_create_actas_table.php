@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ruta')->nullable(false);
             $table->string('categoria')->nullable(false);
             $table->string('estadolicencia')->nullable(false);
-          
+
             // relación con operativos
             $table->unsignedBigInteger('operativo_id')->nullable();
             $table->foreign('operativo_id')->references('id')->on('operativos')->onDelete('set null');
@@ -44,6 +44,7 @@ return new class extends Migration
             //relacion con vehiculos intervenidos
             $table->unsignedBigInteger('vehiculo_id')->nullable();
             $table->foreign('vehiculo_id')->references('id')->on('vehiculos')->onDelete('set null');
+
             $table->timestamps();
         });
     }

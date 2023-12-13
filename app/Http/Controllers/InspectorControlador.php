@@ -22,7 +22,7 @@ class InspectorControlador extends Controller
      */
     public function buscar(Request $request)
     {
-        
+
     }
 
     /**
@@ -93,9 +93,9 @@ class InspectorControlador extends Controller
      */
     public function destroy(string $id)
     {
-        $operativo = Inspector::findOrFail($id);
-        $operativo->delete();
-    
+        $inspector = Inspector::findOrFail($id);
+        $inspector->delete();
+
         // Redireccionar a la página o realizar alguna acción adicional
         return redirect()->back();
     }

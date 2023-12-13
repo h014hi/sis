@@ -15,9 +15,13 @@ class PagosControlador extends Controller
     public function index()
     {
         $pagos_realizados = Pago::join('actas', 'pagos.acta_id', '=', 'actas.id')
-        ->orderBy('actas.numero', 'asc')->paginate(5);
+            ->select('pagos.*', 'actas.numero as acta_numero')
+            ->orderBy('actas.numero', 'asc')
+            ->paginate(5);
+
         $actas = Acta::all();
-        return view('pagos',['pagos'=>$pagos_realizados , 'actas'=>$actas]);
+
+        return view('pagos', ['pagos' => $pagos_realizados, 'actas' => $actas]);
     }
 
     /**
@@ -28,13 +32,13 @@ class PagosControlador extends Controller
         $nuevo_pago = new Pago;
         $nuevo_pago->tipo = $request->input('inputGroupSelect01');
 
-        
+
         $cambia = Acta::findOrFail($request->input('acta'));
 
         if($request->input('inputGroupSelect01') == "INFRACCION" || $request->input('inputGroupSelect01') == "SANCION")
         {
             $cambia->estado = "ARCHIVADO";
-            $cambia->save();            
+            $cambia->save();
         }
         else
         {
@@ -86,7 +90,7 @@ class PagosControlador extends Controller
 
         if($request->input('inputGroupSelect01') == "INFRACCION" || $request->input('inputGroupSelect01') == "SANCION")
         {
-            $cambia->estado = "ARCHIVADO"; 
+            $cambia->estado = "ARCHIVADO";
         }
         else
         {
@@ -110,9 +114,9 @@ class PagosControlador extends Controller
      */
     public function destroy(string $id)
     {
-        $operativo = Pago::findOrFail($id);
-        $operativo->delete();
-    
+        $pago = Pago::findOrFail($id);
+        $pago->delete();
+
         // Redireccionar a la página o realizar alguna acción adicional
         return redirect()->back();
     }
