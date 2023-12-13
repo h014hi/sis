@@ -68,7 +68,7 @@
 
             <br>
             <div class="col-md-12">
-            <p class="text-center" style="font-size: 130%;"><b>VERIFICA TU INFRACCION</b></p>
+            <p class="text-center" style="font-size: 130%;"><b>VERIFICA TU ACTA DE CONTROL</b></p>
             <br>
 
 
@@ -127,7 +127,7 @@
                 @endif
 
                 </table>
-                
+
                 @if(isset($resultados) && count($resultados) > 0)
                     @foreach($resultados as $acta)
                         <div class="container w-25" >
@@ -144,8 +144,8 @@
                                     'descuento'     => $acta->infraccion->descuento,
                                 ];
                                 $infra_data_cypher = encrypt(json_encode($infraccion_data));
-                            @endphp 
-                            <a href="{{ route('infraccion.mostrar',['data_infrac'=>$infra_data_cypher]) }}" 
+                            @endphp
+                            <a href="{{ route('infraccion.mostrar',['data_infrac'=>$infra_data_cypher]) }}"
                             class="btn btn-info w-100">
                                 SABER MÁS DE MI INFRACCIÓN...
                             </a>

@@ -24,30 +24,6 @@ class ActaControlador extends Controller
         return view('actas',['resultados'=>$resultados]);
     }
 
-    //admin busqueda
-
-    public function buscar2(Request $request)
-    {
-        $query = $request->input('q');
-
-        // Realiza la búsqueda en la base de datos
-        $resultados = Acta::where('numero', 'LIKE', "%$query%")
-            ->orWhere('estado', 'LIKE', "%$query%")
-            ->orWhere('observacion', 'LIKE', "%$query%")
-            ->orWhereHas('conductor', function ($q) use ($query) {
-                $q->where('dni', 'LIKE', "%$query%");
-            })
-            ->orWhereHas('vehiculo', function ($q) use ($query) {
-                $q->where('placa', 'LIKE', "%$query%");
-            })
-            ->orWhereHas('inspector', function ($q) use ($query) {
-                $q->where('nombres', 'LIKE', "%$query%");
-            })
-            ->get();
-
-        return view('resultados_busqueda', compact('resultados', 'query'));
-    }
-
 
     //****************************************************************************** */
 

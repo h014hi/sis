@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('tipo')->nullable(false);
             $table->string('lugar',150)->nullable(false);
+            $table->string('provincia',150)->nullable(false);
+            $table->string('distrito',150)->nullable(true);
             $table->date('fecha')->nullable(false);
             $table->integer('diashabiles')->nullable(true);
             $table->timestamps();

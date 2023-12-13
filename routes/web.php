@@ -80,7 +80,7 @@ Route::middleware([
             Route::get('/ifiactas/{id}', [PDFControlador::class, 'generarDocumento'])->name('ifi');
 
             //CONSULTA ADMIN
-            Route::get('/busqueda', [ActaControlador::class, 'buscar2'])->name('busqueda');
+
 
 
             //AUTOAPI APIS SIMPLES

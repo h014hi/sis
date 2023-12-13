@@ -1,22 +1,9 @@
 <div class="col-md-12">
-        <div class="container mt-4">
-            <div class="d-flex justify-content-center">
-                <form action="{{ route('busqueda') }}" method="GET" class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Buscar...">
-                    <button type="submit" class="btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </div>
 
         <!-- Botón o enlace que abre el modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="background-color: #187BEC; margin: 10px 10px 10px -15px;">
-            Nuevo Operativo 
+            Nuevo Operativo
         </button>
-        
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" >
@@ -28,7 +15,7 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        
+
                         <form action="{{ route('registrar.operativo') }}" method="GET">
                         <div class="modal-body">
 
@@ -37,16 +24,26 @@
                                     <label class="input-group-text" for="inputGroupSelect01">Tipo de Operativo</label>
                                     <select class="form-select" id="inputGroupSelect01" name = "inputGroupSelect01" value="">
                                         <option selected>Seleccionar...</option>
+                                        <option value="PROGRAMADO">PROGRAMADO</option>
                                         <option value="INOPINADO">INOPINADO</option>
-                                        <option value="MULTISECTORIAL">MULTISECTORIAL</option>
                                     </select>
                                     </div>
                                 </div>
-                            
+
                                 <div class="form-group">
                                     <label for="lugar">Lugar:</label>
                                     <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Ingrese el lugar">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="provincia">Provincia:</label>
+                                    <input type="text" class="form-control" id="provincia" name="provincia" placeholder="Ingrese la provincia">
+                                </div>
+                                <div class="form-group">
+                                    <label for="distrito">Distrito:</label>
+                                    <input type="text" class="form-control" id="distrito" name="distrito" placeholder="Ingrese el distrito">
+                                </div>
+
                                 <div class="form-group">
                                     <label for="fecha">Fecha:</label>
                                     <input type="date" class="form-control" id="fecha" name="fecha">
@@ -54,8 +51,8 @@
                                 <div class="form-group">
                                     <label for="habilitado">Habilitar:</label>
                                     <input type="number" class="form-control" id="numero" name="dias" value="0">
-                                </div>    
-                            
+                                </div>
+
                         </div>
 
                         <div class="modal-footer">
@@ -65,13 +62,13 @@
 
                         </form>
 
-                    </div>    
+                    </div>
                 </div>
         </div>
 
 
         <!--FORMULARIO PARA EDITAR-->
-        
+
 
         <div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" >
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-custom modal-xl" role="document">
@@ -82,7 +79,7 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        
+
                         <form action="" id="editarForm" method="POST">
                         <div class="modal-body">
                                 @csrf
@@ -92,8 +89,8 @@
                                     <label class="input-group-text" for="inputGroupSelect01">Tipo de Operativo</label>
                                     <select class="form-select" id="inputGroupSelect01edit" name = "inputGroupSelect01" value="">
                                         <option selected>Seleccionar...</option>
+                                        <option value="PROGRAMADO">PROGRAMADO</option>
                                         <option value="INOPINADO">INOPINADO</option>
-                                        <option value="MULTISECTORIAL">MULTISECTORIAL</option>
                                     </select>
                                     </div>
                                 </div>
@@ -102,6 +99,16 @@
                                     <label for="lugar">Lugar:</label>
                                     <input  type="text" class="form-control" id="lugaredit" name="lugar" value="">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="provincia">Provincia:</label>
+                                    <input type="text" class="form-control" id="provinciaedit" name="provincia" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="distrito">Distrito:</label>
+                                    <input type="text" class="form-control" id="distritoedit" name="distrito" value="">
+                                </div>
+
                                 <div class="form-group">
                                     <label for="fecha">Fecha:</label>
                                     <input type="date" class="form-control" id="fechaedit" name="fecha" value="">
@@ -109,8 +116,8 @@
                                 <div class="form-group">
                                     <label for="habilitado">Habilitar:</label>
                                     <input type="number" class="form-control" id="numeroedit" name="dias" value="">
-                                </div>    
-                            
+                                </div>
+
                         </div>
 
                         <div class="modal-footer">
@@ -120,7 +127,7 @@
 
                         </form>
 
-                    </div>    
+                    </div>
                 </div>
         </div>
 </div>
@@ -128,12 +135,13 @@
 
 <div class="table-responsive">
 <table class="table" style="font-size: 75%; text-align: center;">
-        
+
                     <!--CABECERA-->
                     <thead class="thead-dark">
                             <tr>
                                 <th scope="col">TIPO DE OPERATIVO</th>
                                 <th scope="col">LUGAR DE OPERATIVO</th>
+                                <th scope="col">PROVINCIA</th>
                                 <th scope="col">FECHA DE OPERATIVO</th>
                                 <th scope="col">TOTAL DE ACTAS</th>
                                 <th scope="col">ARCHIVADOS</th>
@@ -148,24 +156,25 @@
 
                     <!--CUERPO-->
                     <tbody>
-                        
+
                             @foreach($resultados as $operativo)
                                     <tr>
                                     <td>{{$operativo->tipo}}</td>
                                     <td>{{$operativo->lugar}}</td>
+                                    <td>{{$operativo->provincia}}</td>
                                     <td>{{$operativo->fecha}}</td>
-                                
+
                                     @php
                                         $archivados = 0;
                                         $tramitados = 0;
                                         $condescargo = 0;
                                         $libre=0;
                                         $actas = 0;
-                                        
+
                                         foreach($operativo->actas as $acta)
                                         {
                                             $actas+=1;
-                                            
+
                                                 if($acta->estado == "ARCHIVADO")
                                                 {
                                                 $archivados+=1;
@@ -195,10 +204,10 @@
 
                                     <td>
                                         <!-- Update button -->
-                                        <a class="btn btn-warning" data-toggle="modal" data-target="#myModalEdit" onclick="capturar({{ json_encode($operativo->id) }},{{ json_encode($operativo->lugar) }},{{ json_encode($operativo->fecha) }},{{ json_encode($operativo->diashabiles) }},{{ json_encode($operativo->tipo) }})">
+                                        <a class="btn btn-warning" data-toggle="modal" data-target="#myModalEdit" onclick="capturar({{ json_encode($operativo->id) }},{{ json_encode($operativo->lugar) }},{{ json_encode($operativo->provincia) }},{{ json_encode($operativo->distrito) }},{{ json_encode($operativo->fecha) }},{{ json_encode($operativo->diashabiles) }},{{ json_encode($operativo->tipo) }})">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                             <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                                            </svg> 
+                                            </svg>
                                         </a>
 
                                         <!-- View button -->
@@ -208,7 +217,7 @@
                                             <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                                         </svg>
                                         </a>
-                                        
+
                                         <!-- Delete button -->
 
                                         <form action="{{ route('operativo.destroy', ['id' => $operativo->id]) }}" method="POST" class="btn btn-danger d-inline" >
@@ -221,9 +230,9 @@
                                             </button>
                                         </form>
 
-                                    </td>        
-                                    </tr>    
-                            @endforeach               
+                                    </td>
+                                    </tr>
+                            @endforeach
                     </tbody>
 
 </table>
@@ -233,40 +242,17 @@
 </div>
 
 <script>
-    function capturar(id,lugar,fecha,diahabiles,tipo)
+    function capturar(id,lugar,provincia,distrito,fecha,diahabiles,tipo)
         {
-        
+
             var ruta = "{{ route('operativo.update', ['id' => ':id']) }}";
             ruta = ruta.replace(':id', id);
             document.getElementById("editarForm").action = ruta;
-            document.getElementById("lugaredit").value = lugar;     
-            document.getElementById("fechaedit").value = fecha;  
-            document.getElementById("numeroedit").value = diahabiles; 
-            document.getElementById("inputGroupSelect01edit").value = tipo;         
-        } 
-
-    function eliminarOperativo(id) {
-        if (confirm('¿Estás seguro de que deseas eliminar este operativo?')) {
-            // Puedes usar Axios o Fetch para enviar una solicitud DELETE al controlador
-            // Aquí se usa Fetch como ejemplo
-            fetch(`/operativo/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Recargar la página o actualizar la lista de operativos
-                    location.reload();
-                } else {
-                    alert('Error al eliminar el operativo.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            document.getElementById("lugaredit").value = lugar;
+            document.getElementById("provinciaedit").value = provincia;
+            document.getElementById("distritoedit").value = distrito;
+            document.getElementById("fechaedit").value = fecha;
+            document.getElementById("numeroedit").value = diahabiles;
+            document.getElementById("inputGroupSelect01edit").value = tipo;
         }
-    }
 </script>

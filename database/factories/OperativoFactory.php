@@ -19,6 +19,8 @@ class OperativoFactory extends Factory
         return [
             //
 		'lugar' => $this->faker->sentence(2),
+        'provincia' => $this->faker->randomElement(["AZANGARO","JULIACA","PUNO","ILAVE"]),
+        'distrito' => $this->faker->randomElement(["juli","Asillo","San Anton"]),
 		'fecha' => $this->faker->date(),
         'tipo' =>  $this->faker->randomElement(["INOPINADO","MULTISECTORIAL"]),
         'diashabiles' => 0,
