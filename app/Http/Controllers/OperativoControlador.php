@@ -24,6 +24,8 @@ class OperativoControlador extends Controller
     {
         $nuevo_operativo = new Operativo;
         $nuevo_operativo->lugar= $request->input('lugar');
+        $nuevo_operativo->provincia = $request->input('provincia');
+        $nuevo_operativo->distrito = $request->input('distrito');
         $nuevo_operativo->fecha= $request->input('fecha');
         $nuevo_operativo->tipo = $request->input('inputGroupSelect01');
         $nuevo_operativo->diashabiles= $request->input('dias');;
@@ -71,6 +73,8 @@ class OperativoControlador extends Controller
 
         // Actualizar los datos del operativo
         $operativo->lugar = $request->input('lugar');
+        $operativo->provincia = $request->input('provincia');
+        $operativo->distrito = $request->input('distrito');
         $operativo->fecha = $request->input('fecha');
         $operativo->tipo = $request->input('inputGroupSelect01');
         $operativo->diashabiles = $request->input('dias');
@@ -87,10 +91,10 @@ class OperativoControlador extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {   
+    {
         $operativo = Operativo::findOrFail($id);
         $operativo->delete();
-    
+
         // Redireccionar a la página o realizar alguna acción adicional
         return redirect()->back();
     }

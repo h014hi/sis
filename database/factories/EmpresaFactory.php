@@ -22,10 +22,12 @@ class EmpresaFactory extends Factory
             'nombres_rep_legal' => $this->faker->text(),
             'apellidos_rep_legal' => $this->faker->text(),
             'dni_rep_legal' => $numeroDNI,
+            'res_funcionamiento' => $this->faker->randomNumber(9),
+            'partida_electronica' =>$this->faker->randomNumber(8),
             'numero_celular' => '9' . $this->faker->randomNumber(8),
             'ruc' => $this->faker->randomElement(['20', '10']) . $numeroDNI . $this->faker->numberBetween(1, 9),
             'domicilio' => $this->faker->text(),
         ];
-        
+
     }
 }

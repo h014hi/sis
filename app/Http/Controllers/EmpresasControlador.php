@@ -29,6 +29,8 @@ class EmpresasControlador extends Controller
         //documento
         $razon = $request->input('razon_social');
         $ruc = $request->input('ruc');
+        $res_funcionamiento = $request->input('res_funcionamiento');
+        $partida_electronica = $request->input('partida_electronica');
         $tipo = $request->input('tipo');
             if ($tipo === "tipo1"){
                 $buscar1 = Empresa::where('razon_social', $razon)->first();
@@ -51,6 +53,8 @@ class EmpresasControlador extends Controller
             'dni_rep_legal' => 'required',
             'numero_celular' => 'required',
             'ruc' => 'required',
+            'res_funcionamiento' => 'required',
+            'partida_electronica' => 'required',
             'domicilio' => 'required',
         ]);
 
@@ -62,6 +66,8 @@ class EmpresasControlador extends Controller
         $usuario->dni_rep_legal = $request->input('dni_rep_legal');
         $usuario->numero_celular = $request->input('numero_celular');
         $usuario->ruc = $request->input('ruc');
+        $usuario->res_funcionamiento = $request->input('res_funcionamiento');
+        $usuario->partida_electronica = $request->input('partida_electronica');
         $usuario->domicilio = $request->input('domicilio');
         $usuario->save();
 
@@ -97,6 +103,8 @@ class EmpresasControlador extends Controller
             'dni_rep_legal' => 'required',
             'numero_celular' => 'required',
             'ruc' => 'required',
+            'res_funcionamiento' => 'required',
+            'partida_electronica' => 'required',
             'domicilio' => 'required',
         ]);
 
@@ -109,6 +117,8 @@ class EmpresasControlador extends Controller
         $actualizar->dni_rep_legal = $request->input('dni_rep_legal');
         $actualizar->numero_celular = $request->input('numero_celular');
         $actualizar->ruc = $request->input('ruc');
+        $actualizar->res_funcionamiento = $request->input('res_funcionamiento');
+        $actualizar->partida_electronica = $request->input('partida_electronica');
         $actualizar->domicilio = $request->input('domicilio');
         $actualizar->save();
 

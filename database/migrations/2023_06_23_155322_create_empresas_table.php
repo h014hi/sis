@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('dni_rep_legal');
             $table->string('numero_celular');
             $table->string('ruc');
+            $table->string('res_funcionamiento');
+            $table->string('partida_electronica');
             $table->text('domicilio');
             $table->timestamps();
         });
