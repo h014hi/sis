@@ -93,6 +93,9 @@ class OperativoControlador extends Controller
     public function destroy(string $id)
     {
         $operativo = Operativo::findOrFail($id);
+        foreach ($operativo->actas as $acta) {
+            $acta->delete();
+        }
         $operativo->delete();
 
         // Redireccionar a la página o realizar alguna acción adicional

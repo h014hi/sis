@@ -46,7 +46,10 @@
                     <x-nav-link href="{{ route('grafico') }}" :active="request()->routeIs('grafico')">
                         {{ __('Reportes') }}
                     </x-nav-link>
-
+                    
+                    <x-nav-link href="{{ route('resoluciones') }}" :active="request()->routeIs('resoluciones')">
+                        {{ __('Resoluciones') }}
+                    </x-nav-link>
                 </div>
 
             </div>

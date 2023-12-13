@@ -9,6 +9,7 @@ use App\Http\Controllers\InfraccionControlador;
 use App\Http\Controllers\EmpresasControlador;
 use App\Http\Controllers\PDFControlador;
 use App\Http\Controllers\PagosControlador;
+use App\Http\Controllers\ResolucionesControlador;
 use App\Http\Controllers\Controller;
 /*
 |--------------------------------------------------------------------------
@@ -43,12 +44,12 @@ Route::middleware([
     Route::get('/inspectores' ,[InspectorControlador::class,'index'])->name('inspectores');
     Route::get('/empresas', [EmpresasControlador::class,'index'])->name('empresas');
     Route::get('/pagos', [PagosControlador::class,'index'])->name('pagos');
-
+    Route::get('/resoluciones', [ResolucionesControlador::class,'index'])->name('resoluciones');
 
     //REPORTES EN VIVO
     Route::get('/graficos', [PDFControlador::class,'mostrarGrafico'])->name('grafico');
 
-                //OPERATIVOS
+            //OPERATIVOS
             Route::get('/registraroperativo',[OperativoControlador::class,'create'])->name('registrar.operativo');
             Route::post('/operativo/{id}', [OperativoControlador::class, 'update'])->name('operativo.update');
             Route::delete('/operativo/{id}', [OperativoControlador::class, 'destroy'])->name('operativo.destroy');
@@ -79,9 +80,10 @@ Route::middleware([
             Route::post('/generarreporte', [PDFControlador::class, 'generarreporte'])->name('generar.reporte');
             Route::get('/ifiactas/{id}', [PDFControlador::class, 'generarDocumento'])->name('ifi');
 
-            //CONSULTA ADMIN
-
-
+            //RESOLUCIONES
+            Route::get('/registrarresolucion',[ResolucionesControlador::class,'create'])->name('registrar.resolucion');
+            Route::post('/resolucion/{id}', [ResolucionesControlador::class, 'update'])->name('resolucion.update');
+            Route::delete('/resolucion/{id}', [ResolucionesControlador::class, 'destroy'])->name('resolucion.destroy');
 
             //AUTOAPI APIS SIMPLES
             Route::get('/empresasreport', [Controller::class, 'empresas']);
