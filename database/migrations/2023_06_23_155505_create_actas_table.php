@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('actas', function (Blueprint $table) {
             $table->id();
-            $table->string('numero',150)->nullable(false);
+            $table->char('agente_infrac',25)->nullable(true);
+            $table->integer('numero')->nullable(false);
             $table->string('estado',150)->nullable(false);
-            $table->text('observacion');
-            $table->text('retencion');
-            $table->string('ruta')->nullable(false);
+            $table->text('retencion')->nullable(true);
+            $table->string('ruta')->nullable(true);
             $table->string('categoria')->nullable(false);
             $table->string('estadolicencia')->nullable(false);
+            $table->text('obs_intevenido')->nullable(true);
+            $table->text('obs_inspector')->nullable(true);
+            $table->text('obs_acta')->nullable(true);
 
             // relación con operativos
             $table->unsignedBigInteger('operativo_id')->nullable();

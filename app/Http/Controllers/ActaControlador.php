@@ -150,6 +150,10 @@ class ActaControlador extends Controller
 
         $nuevo_acta = new Acta;
 
+        $letraLicencia = $request->input('Letral');
+        $dni = $request->input('dni');
+        $licencia = $letraLicencia . $dni;
+
         $vehiculo = Vehiculo::where('placa',$request->input('placa'))->first();
         if($vehiculo)
         {
@@ -175,7 +179,7 @@ class ActaControlador extends Controller
         {
             $nuevo_conductor = new Conductor;
             $nuevo_conductor->dni = $request->input('dni');
-            $nuevo_conductor->licencia = $request->input('licencia');
+            $nuevo_conductor->licencia = $licencia;
             $nuevo_conductor->nombres = $request->input('nombres');
             $nuevo_conductor->apellidos = $request->input('apellidos');
             $nuevo_conductor->save();
@@ -186,7 +190,9 @@ class ActaControlador extends Controller
         $nuevo_acta->operativo_id= $id;
         $nuevo_acta->numero= $request->input('acta');
         $nuevo_acta->estado= $request->input('condicion_id');
-        $nuevo_acta->observacion = $request->input('observaciones');
+        $nuevo_acta->obs_intervenido = $request->input('obs_intervenido');
+        $nuevo_acta->obs_inspector = $request->input('obs_inspector');
+        $nuevo_acta->obs_acta = $request->input('obs_acta');
         $nuevo_acta->retencion= $request->input('retencion');
         $nuevo_acta->ruta= $request->input('ruta');
         $nuevo_acta->categoria= $request->input('categoria');
@@ -205,7 +211,9 @@ class ActaControlador extends Controller
         $upacta = Acta::findOrFail($id);
         $upacta->numero= $request->input('acta');
         $upacta->estado= $request->input('condicion_id');
-        $upacta->observacion = $request->input('observaciones');
+        $upacta->obs_intervenido = $request->input('obs_intervenido');
+        $upacta->obs_inspector = $request->input('obs_inspector');
+        $upacta->obs_acta = $request->input('obs_acta');
         $upacta->retencion= $request->input('retencion');
         $upacta->ruta= $request->input('ruta');
         $upacta->categoria= $request->input('categoria');

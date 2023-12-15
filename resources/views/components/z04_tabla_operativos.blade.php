@@ -23,16 +23,16 @@
                                     <div class="input-group mb-3">
                                     <label class="input-group-text" for="inputGroupSelect01">Tipo de Operativo</label>
                                     <select class="form-select" id="inputGroupSelect01" name = "inputGroupSelect01" value="">
-                                        <option selected>Seleccionar...</option>
-                                        <option value="PROGRAMADO">PROGRAMADO</option>
+                                        <option disabled>Seleccionar...</option>
+                                        <option value="PROGRAMADO" selected>PROGRAMADO</option>
                                         <option value="INOPINADO">INOPINADO</option>
                                     </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="lugar">Lugar:</label>
-                                    <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Ingrese el lugar">
+                                    <label for="lugar" >Lugar:</label>
+                                    <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Ingrese el lugar" required>
                                 </div>
 
                                 <div class="form-group">
@@ -46,7 +46,7 @@
 
                                 <div class="form-group">
                                     <label for="fecha">Fecha:</label>
-                                    <input type="date" class="form-control" id="fecha" name="fecha">
+                                    <input type="date" class="form-control" id="fecha" name="fecha" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="habilitado">Habilitar:</label>

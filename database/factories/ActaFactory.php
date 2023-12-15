@@ -51,7 +51,7 @@ class ActaFactory extends Factory
         'estadolicencia'=> $this->faker->randomElement(["VENCIDA","VIGENTE","EN TRAMITE","DESCONOCIDO"]),
         'infraccion_id'=>$infraccion->id,
         //'pago_id'=>$pago->id,
-        'observacion'=>$this->faker->text(),
+        'obs_acta'=>$this->faker->text(),
         ];
     }
 }

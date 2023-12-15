@@ -1,6 +1,15 @@
 @php
     $indicaciones = "INGRESE EL DNI DEL CONDUCTOR";
 @endphp
+<script>
+    function limitarDigitos(inputElement, maxLength) {
+        let inputValue = inputElement.value;
+        // Limitar a la longitud máxima
+        inputValue = inputValue.slice(0, maxLength);
+        // Actualizar el valor del campo de entrada
+        inputElement.value = inputValue;
+    }
+</script>
 
 <form class="row col-md-12"  action="{{ route('consulta.buscar') }}" method="GET">
             @csrf
@@ -9,7 +18,7 @@
                     <label for="tipo">SELECCIONAR TIPO DE DOCUMENTO :</label>
                     <select class="form-control" id="tipo" name="tipo">
                         <option type= "text" value="tipo1">DNI DEL CONDUCTOR</option>
-                        <option type= "text" value="tipo2">NUMERO DEL ACTA DE CONTROL</option>
+                        <option type= "text" value="tipo2" selected>NUMERO DEL ACTA DE CONTROL</option>
                         <option type= "text" value="tipo3">PLACA DEL VEHICULO</option>
                     </select>
 
@@ -65,7 +74,7 @@
         campo.placeholder = 'Ej. 784';
         indicacionesLabel.innerText = 'INGRESE EL N° DEL ACTA DE CONTROL';
         } else if (opcionSeleccionada === 'tipo3') {
-        campo.placeholder = 'Ej. XYZ-123';
+        campo.placeholder = 'Ej. X2Z-123';
         indicacionesLabel.innerText = 'INGRESE LA PLACA DEL VEHICULO';
         }
     });
