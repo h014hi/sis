@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('infraccions', function (Blueprint $table) {
+        Schema::create('incumplimientos', function (Blueprint $table) {
+            $table->unsignedBigInteger('incumplimiento_id')->nullable();
             $table->id();
-            $table->char('codigo',4)->nullable(false);
-            $table->char('tipo',15)->nullable(false);
-            $table->text('descripcion')->nullable(false);
+            $table->char('articulo',10)->nullable(false);
+            $table->text('numeral')->nullable(false);
             $table->char('calificacion',10)->nullable(false);
-            $table->text('m_preventivas',10)->nullable(true);
+            $table->text('m_preventivas')->nullable(true);
             $table->text('consecuencia')->nullable(true);
-            $table->decimal('importe',8,2)->nullable(true);
-            $table->boolean('descuento')->nullable(true);
+
             $table->timestamps();
+
+            $table->foreign('incumplimiento_id')->references('id')->on('incumplimiento')->onDelete('set null');
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('infraccions');
+        Schema::dropIfExists('incumplimientos');
     }
 };

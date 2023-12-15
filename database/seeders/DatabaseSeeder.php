@@ -24,14 +24,14 @@ class DatabaseSeeder extends Seeder
     {
 
         //orden de creacion influye xd en migraciones y en factories
-	Operativo::factory(3)->create();
-    Empresa::factory(10)->create();
-    Inspector::factory(3)->create();
-    Conductor::factory(15)->create();
-    Vehiculo::factory(15)->create();
-    Infraccion::factory(10)->create();
-    Pago::factory(15)->create();
-	Acta::factory(15)->create();
+	// Operativo::factory(3)->create();
+    // Empresa::factory(10)->create();
+    // Inspector::factory(3)->create();
+    // Conductor::factory(15)->create();
+    // Vehiculo::factory(15)->create();
+    // Infraccion::factory(10)->create();
+    // Pago::factory(15)->create();
+	// Acta::factory(15)->create();
 
     $this->call(UserSeeder::class);
 
