@@ -1,17 +1,4 @@
-<style>
-@media (max-width: 767px) {
-                    .navar {
-                        display: none;
-                    }
-
-                    .imagen
-                    {
-                        margin: 5% 0% 5% 0%;
-                    }
-                }
-</style>
-
-<x-navfiscalizacion></x-navfiscalizacion>
+<x-header/>
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +29,7 @@
                     <x-nav-link href="{{ route('empresas') }}" :active="request()->routeIs('empresas')">
                         {{ __('Empresas') }}
                     </x-nav-link>
-                    
+
                     <x-nav-link href="{{ route('resoluciones') }}" :active="request()->routeIs('resoluciones')">
                         {{ __('Resoluciones') }}
                     </x-nav-link>
@@ -50,14 +37,14 @@
                     <x-nav-link href="{{ route('grafico') }}" :active="request()->routeIs('grafico')">
                         {{ __('Reportes') }}
                     </x-nav-link>
-                    
-                    
+
+
                 </div>
 
             </div>
-            
-            
-            
+
+
+
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
             <x-reportepdf></x-reportepdf>
