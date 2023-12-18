@@ -2,25 +2,25 @@
     function changeColor() {
     var select = document.getElementById("colorSelect");
     var div2 = document.getElementById("headmod");
-    
+
     if(select.value == "CONDESCARGO")
-    {    
+    {
     div2.style.backgroundColor = "orange";
     }
 
     if(select.value == "ARCHIVADO")
     {
-    div2.style.backgroundColor = "#2bd390";  
+    div2.style.backgroundColor = "#2bd390";
     }
 
     if(select.value == "TRAMITADO")
     {
-    div2.style.backgroundColor = "#248ef3";  
+    div2.style.backgroundColor = "#248ef3";
     }
 
     if(select.value == "PENDIENTE")
     {
-    div2.style.backgroundColor = "#fb2d5b";  
+    div2.style.backgroundColor = "#fb2d5b";
     }
 
     }
@@ -37,7 +37,7 @@
                 var tituloElement = document.getElementById('alerta');
                 tituloElement.style.color = 'red';
                 tituloElement.innerHTML = '(REINCIDENTE) El conductor esta volviendo a cometer una infracción';
-                
+
                 document.getElementById('first_name').value = data.nombres;
                 document.getElementById('first_apellido').value = data.apellidos;
             } else {
@@ -62,11 +62,11 @@
             .then(data => {
             // Verifica si la respuesta tiene los campos necesarios
             if (data.placa) {
-                
+
                 var tituloElement = document.getElementById('alertados');
                 tituloElement.style.color = 'green';
                 tituloElement.innerHTML = 'El vehiculo vuelve a ser intervenido';
-                
+
             }
             })
             .catch(error => {
@@ -99,9 +99,9 @@
 
 <div class="modal-body" style="padding: 40px;">
 <form id="formulario" action="{{ route('guardar.actas', ['id' => $id]) }}" method="GET">
-                    
+
 @csrf
-          <!--desde aqui es el formulario-->     
+          <!--desde aqui es el formulario-->
 
           <div class="space-y-3 mb-4">
             <h2 class="font-bold"></h2>
@@ -109,26 +109,36 @@
                         <div class="space-y-3 mb-4">
                             <h2 class="font-bold">DATOS DEL ACTA:</h2>
                             <hr style="border-top: 2px solid #000;">
-                                <div class="space-x-3 flex justify-between"> 
-                                    
-                                    <div class="flex-1 space-y-3">
+                                <div class="space-x-3 flex justify-between">
+
+                                    <div class="flex-1 space-y-3 small_container" >
                                         <label for="estado">Estado del Acta</label>
                                         <select name="condicion_id"  id="colorSelect" onchange="changeColor()" class="bg-white-50 border border-gray-200 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-64 h-10 p-2.5 dark:focus:border-blue-500">
                                             <option type="text" value="PENDIENTE">Pendiente</option>
                                             <option type="text" value="CONDESCARGO">Con Descargo</option>
                                             <option type="text" value="TRAMITADO">Tramitado</option>
                                             <option type="text" value="ARCHIVADO">Archivado</option>
+                                            <option type="text" value="CONRDR">Con RDR</option>
                                         </select>
-                                    </div> 
+                                    </div>
 
-                                    <div class="flex-1 space-y-3">
+                                    <div class="flex-1 space-y-3 small_container" >
+                                        <label for="agente_infrac">Agente Infractor</label>
+                                        <select name="agente_infrac"  id="agente_infrac" class="bg-white-50 border border-gray-200 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-64 h-10 p-2.5 dark:focus:border-blue-500">
+                                            <option type="text" value="CONDUCTOR">Conductor</option>
+                                            <option type="text" value="TRANSPORTISTA" selected>Transportista</option>
+                                            <option type="text" value="OPERADOR DE TERMINAL">Operador de Terminal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex-1 space-y-3 small_container" >
                                             <label for="numero">N° de Acta:</label>
                                             <input type="number" name="acta" id="acta_de_control"
                                                 class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                placeholder="Ingrese N° de acta de control" autocomplete="off" required min="0" oninput="limitarDigitos(this,7)" step="1">
+                                                placeholder="Ejemplo: 489" autocomplete="off" required min="0" oninput="limitarDigitos(this,7)" step="1">
                                     </div>
 
-                                    <div class="flex-1 space-y-3">    
+                                    <div class="flex-1 space-y-3 small_container" >
                                     <label for="">Inspector:</label>
                                         <select name="inspector" value="" id=""
                                             class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:border-blue-500">
@@ -142,7 +152,7 @@
                                     </div>
                                 </div>
                         </div>
-                    </div>       
+                    </div>
         </div>
 
         <div class="space-y-3 mb-4">
@@ -150,7 +160,7 @@
             <hr style="border-top: 2px solid #000;">
             <div class="space-x-3 flex justify-between">
 
-            <div class="flex-1 space-y-3">
+            <div class="flex-1 space-y-3 small_container" >
                 <label for="">Codigo de Infracción:</label>
                 <select name="infraccion" value="" id=""
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:border-blue-500">
@@ -160,14 +170,14 @@
                                     @endforeach
                 </select>
             </div>
-            
-            <div class="flex-1 space-y-3">
+
+            <div class="flex-1 space-y-3 small_container" >
                     <label for="">Retencion de documentos:</label>
                     <input type="text" name="retencion" id="retencion" value="NINGUNA"
                     class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Detalles de retención" autocomplete="off">
             </div>
-            
+
         </div>
     </div>
 
@@ -175,20 +185,20 @@
                     <h2 class="font-bold">DATOS DEL CONDUCTOR <a id="alerta"></a></h2>
                     <hr style="border-top: 2px solid #000;">
                     <div class="space-x-3 flex justify-between">
-                        <div class="flex-1 space-y-3">
+                        <div class="flex-1 space-y-3 small_container" >
                             <label for="">DNI:</label>
                             <input type="number" name="dni" id="dni" value=""
                                 class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="Ingrese su DNI" onchange="consultarDatosDNI(this.value)" autocomplete="off" min="0" required minlength="8" oninput="limitarDigitos(this,8)">
+                                placeholder="Ingrese su DNI" autocomplete="off" min="0" required minlength="8" oninput="limitarDigitos(this,8)">
                         </div>
 
-                        <div class="flex-1 space-y-3">
+                        <div class="flex-1 space-y-3 small_container" >
                             <label for="">Nombres:</label>
                             <input type="text"  name="nombres" id="first_name" value=''
                                 class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Ingrese sus Nombres" autocomplete="off" required>
                         </div>
-                        <div class="flex-1 space-y-3">
+                        <div class="flex-1 space-y-3 small_container" >
                             <label for="">Apellidos:</label>
                             <input type="text" name="apellidos" value=''
                                 id="first_apellido"
@@ -201,9 +211,9 @@
     <div class="space-y-3 mb-4">
         <h2 class="font-bold"><b>DATOS DE LA LICENCIA</b></h2>
         <hr style="border-top: 2px solid #000;">
-    <div class="space-x-3 flex justify-between">  
+    <div class="space-x-3 flex justify-between">
 
-            <div class="flex-1 space-y-3">
+            <div class="flex-1 space-y-3 small_container" >
                 <label for="Letral">Letra Licencia:</label>
                 <select name="Letral" class="bg-white-50 border border-gray-200 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-64 h-10 p-2.5 dark:focus:border-blue-500">
                     @foreach (range('A', 'Z') as $letter)
@@ -212,7 +222,7 @@
                 </select>
             </div>
 
-            <div class="flex-1 space-y-3">
+            <div class="flex-1 space-y-3 small_container" >
                                         <label for="categoria">Categoria:</label>
                                         <select name="categoria"  class="bg-white-50 border border-gray-200 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-64 h-10 p-2.5 dark:focus:border-blue-500">
                                             <option type="text" value="AI">AI</option>
@@ -224,7 +234,7 @@
                                         </select>
             </div>
 
-            <div class="flex-1 space-y-3">
+            <div class="flex-1 space-y-3 small_container" >
                                         <label for="estadol">Estado de la licencia:</label>
                                         <select name="estadol" class="bg-white-50 border border-gray-200 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-64 h-10 p-2.5 dark:focus:border-blue-500">
                                             <option type="text" value="VIGENTE" selected>VIGENTE</option>
@@ -232,7 +242,7 @@
                                             <option type="text" value="ENTRAMITE">EN TRAMITE</option>
                                             <option type="text" value="DESCONOCIDO">DESCONOCIDO</option>
                                         </select>
-            </div> 
+            </div>
 
         </div>
     </div>
@@ -240,9 +250,9 @@
     <div class="space-y-3 mb-4">
     <h2 class="font-bold">DATOS DEL VEHICULO <a id="alertados"></a></h2>
     <hr style="border-top: 2px solid #000;">
-    <div class="space-x-3 flex justify-between">  
-            
-            <div class="flex-1 space-y-3">
+    <div class="space-x-3 flex justify-between">
+
+            <div class="flex-1 space-y-3 small_container" >
                 <label for="">Empresa:</label>
                 <select name="empresas" value="" id=""
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:border-blue-500">
@@ -253,58 +263,62 @@
                                     @endforeach
                 </select>
             </div>
-            
-            
-            <div class="flex-1 space-y-3">
+
+
+            <div class="flex-1 space-y-3 small_container" >
                 <label for="">Placa:</label>
                 <input type="text" name="placa" id="placa"
                 class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Ejemplo: X7S-955" onchange="consultarPlaca(this.value)" autocomplete="off" required oninput="limitarDigitos(this,7)">
             </div>
-            
-            <div class="flex-1 space-y-3">
+
+            <div class="flex-1 space-y-3 small_container" >
                 <label for="">Ruta:</label>
                 <input type="text" name="ruta" id="ruta"
                 class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    placeholder="Ingrese su ruta" autocomplete="off" required>
+                    placeholder="Ingrese ruta" autocomplete="off" required>
             </div>
         </div>
     </div>
 
-    
-            
-        <div class="space-y-3 mb-4">
-            <div class="space-x-3 flex justify-between">  
-                <div class="flex-1 space-y-3">
-                    <label for="">Observacion del Intervenido</label>
-                    <input type="text" name="obs_intervenido" id="obs_intervenido"
-                    class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Ingrese alguna observaciones del intervenido" >
-                </div>            
+    <div class="space-y-1 mb-4">
+        <h2 class="font-bold">OBSERVACIONES</h2>
+        <hr style="border-top: 2px solid #000;">
+        <div class="space-x-3 flex justify-between">
+
+            <div class="space-y-3 mb-4">
+                <div class="space-x-3 flex justify-between">
+                    <div class="flex-1 space-y-3 small_container" >
+                        <label for="">Observacion del Intervenido</label>
+                        <textarea type="text" name="obs_intervenido" id="obs_intervenido"
+                        class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Ingrese alguna observaciones del intervenido"rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-3 mb-4">
+                <div class="space-x-3 flex justify-between">
+                    <div class="flex-1 space-y-3 small_container" >
+                        <label for="">Observaciones del Inspector</label>
+                        <textarea type="text" name="obs_inspector" id="obs_inspector"
+                        class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Ingrese alguna observaciones del inspector" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-3 mb-4">
+                <div class="space-x-3 flex justify-between">
+                    <div class="flex-1 space-y-3 small_container" >
+                        <label for="">Observaciones del Acta</label>
+                        <textarea type="text" name="obs_acta" id="obs_acta"
+                        class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Ingrese alguna observaciones del Acta" rows="4"></textarea>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="space-y-3 mb-4">
-            <div class="space-x-3 flex justify-between">  
-                <div class="flex-1 space-y-3">
-                    <label for="">Observaciones del Inspector</label>
-                    <input type="text" name="obs_inspector" id="obs_inspector"
-                    class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Ingrese alguna observaciones del inspector" >
-                </div>            
-            </div>
-        </div>
-        <div class="space-y-3 mb-4">
-            <div class="space-x-3 flex justify-between">  
-                <div class="flex-1 space-y-3">
-                    <label for="">Observaciones del Acta</label>
-                    <input type="text" name="obs_acta" id="obs_acta"
-                    class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Ingrese alguna observaciones del Acta" >
-                </div>           
-            </div>
-        </div>
-        
-        
+    </div>
+
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal" style = "background-color: #EC7518; color:white;">Cerrar</button>
@@ -328,9 +342,9 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                     <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-                    </svg> 
+                    </svg>
         </a>
-  
+
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="background-color: #187BEC;">
          Registrar Acta
         </button>
@@ -345,7 +359,7 @@
     <div class="col-md-12 table-responsive">
                 <table class="table" style="font-size: 65%; text-align: center;">
                     <thead class="thead-dark">
-                    <tr> 
+                    <tr>
                         <th scope="col">ITEM</th>
                         <th scope="col">N° DE ACTA</th>
                         <th scope="col">FECHA DE INSPECCIÓN</th>
@@ -357,22 +371,18 @@
                         <th scope="col">LICENCIA / ESTADO</th>
                         <th scope="col">FALTA</th>
                         <th scope="col">RETENCION</th>
-                        <!--
-                        <th scope="col">OBSERVACIONES DEL INTERVENIDO</th>
-                        <th scope="col">OBSERVACIONES DEL INSPECTOR</th>
-                        -->
-                        <th scope="col">OBS DEL ACTA</th>
+                        <th scope="col">OBSERVACIONES</th>
                         <th scope="col">ESTADO</th>
                         <th scope="col">ACCIONES</th>
                     </tr>
                     </thead>
-                    <x-z01_tabla_actas_admin :resultados="$resultados" :inspectores="$inspectores" :empresas="$empresas" :conductores="$conductores" :infracciones="$infracciones" :vehiculos="$vehiculos" :pagos="$pagos"/>
-                    
+                    <x-z01_tabla_actas_admin :actas="$actas" :inspectores="$inspectores" :empresas="$empresas" :conductores="$conductores" :infracciones="$infracciones" :vehiculos="$vehiculos" :pagos="$pagos"/>
+
                 </table>
 
-                <div class="col-md-12" style="margin: 0px 0px 10px 0px">{{$resultados->links()}}</div>
+                <div class="col-md-12" style="margin: 0px 0px 10px 0px">{{$actas->links()}}</div>
     </div>
-    
+
 <style>
     /* Hide the stepper arrows for number input */
     input[type="number"]::-webkit-inner-spin-button,
@@ -380,11 +390,14 @@
         -webkit-appearance: none;
         margin: 0;
     }
-    
+
     input[type="number"] {
         -moz-appearance: textfield;
     }
-    </style>
-      
+    .small_container{
+        margin-right: 10px;
+    }
+</style>
+
 
 

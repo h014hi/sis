@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ruta')->nullable(true);
             $table->string('categoria')->nullable(false);
             $table->string('estadolicencia')->nullable(false);
-            $table->text('obs_intevenido')->nullable(true);
+            $table->text('obs_intervenido')->nullable(true);
             $table->text('obs_inspector')->nullable(true);
             $table->text('obs_acta')->nullable(true);
 

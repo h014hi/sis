@@ -10,7 +10,10 @@ use App\Http\Controllers\EmpresasControlador;
 use App\Http\Controllers\PDFControlador;
 use App\Http\Controllers\PagosControlador;
 use App\Http\Controllers\ResolucionesControlador;
+use App\Http\Controllers\UbigeoController;
+
 use App\Http\Controllers\Controller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,4 +92,11 @@ Route::middleware([
             Route::get('/empresasreport', [Controller::class, 'empresas']);
             Route::get('/conductores/{id}', [Controller::class, 'conductor']);
             Route::get('/placas/{id}', [Controller::class, 'placas']);
+
+            // Add this route in your web.php file
+
+
+            Route::get('/get-provinces', [UbigeoController::class, 'getProvinces'])->name('get-provinces');
+            Route::get('/get-districts/{id}', [UbigeoController::class, 'getDistricts'])->name('get-districts');
+
 });

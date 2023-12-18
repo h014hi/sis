@@ -18,9 +18,9 @@ class InspectorFactory extends Factory
     {
         return [
             //
-        'nombres'=> $this->faker->randomElement(["Juan","Jorge","Julian"]),
-        'apellidos'=> $this->faker->realText(20),
-        'telefono'=>'9' . $this->faker->randomNumber(8),
+            'nombres'=> $this->faker->randomElement(["Juan","Jorge","Julian"]),
+            'apellidos'=> $this->faker->realText(20),
+            'telefono'=>$this->faker->randomElement(["SI"]),
         ];
     }
 }

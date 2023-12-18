@@ -48,7 +48,7 @@
                                     <input type="date" class="form-control" id="fecha" name="fecha" required>
                                 </div>
 
-                                
+
                                 <div class="form-group">
                                     <label for="detalle">Detalle</label>
                                     <input type="text" class="form-control" id="detalle" name="detalle" placeholder="Ingrese mas informacion sobre la resolucion" autocomplete="off">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
              <!-- Modal to EDIT -->
             <div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" >
@@ -106,7 +106,7 @@
                                     <input type="date" class="form-control" id="fechaedit" name="fecha" required>
                                 </div>
 
-                                
+
                                 <div class="form-group">
                                     <label for="detalle">Detalle</label>
                                     <input type="text" class="form-control" id="detalleedit" name="detalle" placeholder="Ingrese mas informacion sobre la resolucion" autocomplete="off">
@@ -130,6 +130,7 @@
         <!--CABECERA-->
         <thead class="thead-dark">
                 <tr>
+                    <th scope="col" rowspan="2" >N°</th>
                     <th scope="col" rowspan="2" >EMPRESA DE TRANSPORTES</th>
                     <th scope="col" colspan="4" class="borders_1">DATOS DEL ACTA</th>
                     <th scope="col" colspan="3" class="borders_1">DATOS DEL CONDUCTOR</th>
@@ -153,8 +154,9 @@
 
         <tbody>
 
-            @foreach($resoluciones as $resolucion)
+            @foreach($resoluciones as $index => $resolucion)
                     <tr>
+                        <td>{{$index +1}}</td>
                         <td>{{$resolucion->acta->empresa->razon_social}}</td>
                         <td>{{$resolucion->acta->numero}}</td>
                         <td>{{$resolucion->acta->operativo->fecha}}</td>

@@ -71,7 +71,7 @@ class ActaControlador extends Controller
                     return view('pagina_principal',['mensaje'=>['No se ha encontrado ninguna acta de control asociada a este N° de acta de Control.','Si la intervención tuvo lugar hoy, verifique en el sistema después de transcurridas 24 horas o acérquese a la oficina de la Subdirección de Fiscalización.']]);
                 }
             }
-            else if($tipo === "tipo3"  and strlen($numero) === 7 )
+            else if($tipo === "tipo3"  and strlen($numero) <= 7 )
             {
                 $vehiculo = Vehiculo::where('placa', $numero)->first();
                 if($vehiculo)
@@ -154,7 +154,10 @@ class ActaControlador extends Controller
         $dni = $request->input('dni');
         $licencia = $letraLicencia . $dni;
 
-        $vehiculo = Vehiculo::where('placa',$request->input('placa'))->first();
+        $placatemp = $request->input('placa');
+        $placasinguion = str_replace("-", "", $placatemp);
+        $vehiculo = Vehiculo::where('placa',$placasinguion)->first();
+
         if($vehiculo)
         {
             $nuevo_acta->vehiculo()->associate($vehiculo);
@@ -162,10 +165,10 @@ class ActaControlador extends Controller
         else
         {
             $nuevo_vehiculo = new Vehiculo;
-            $nuevo_vehiculo->placa = $request->input('placa');
+            $nuevo_vehiculo->placa = $placasinguion;
             $nuevo_vehiculo->save();
 
-            $a = Vehiculo::where('placa',$request->input('placa'))->first();
+            $a = Vehiculo::where('placa',$placasinguion)->first();
             $nuevo_acta->vehiculo()->associate($a);
 
         }
@@ -207,6 +210,7 @@ class ActaControlador extends Controller
 
     public function editaracta(Request $request, string $id)
     {
+
         // Crear un nuevo usuario
         $upacta = Acta::findOrFail($id);
         $upacta->numero= $request->input('acta');
@@ -234,8 +238,11 @@ class ActaControlador extends Controller
         $conductor->apellidos = $request->input('apellidos');
         $conductor->save();
 
+        $placatemp = $request->input('placa');
+        $placasinguion = str_replace("-", "", $placatemp);
+
         $vehiculo = Vehiculo::findOrFail($upacta->vehiculo_id);
-        $vehiculo->placa = $request->input('placa');
+        $vehiculo->placa = $placasinguion;
         $vehiculo->save();
 
         $upacta->save();
@@ -255,7 +262,16 @@ class ActaControlador extends Controller
         $vehiculos = Vehiculo::all();
         $pagos = Pago::all();
         $actas = Acta::where('operativo_id', $id)->orderBy('updated_at', 'desc')->paginate(5);
-        return view('actas', ['resultados'=>$actas, 'inspectores'=>$inspectores, 'empresas'=>$empresas, 'conductores'=>$conductores, 'infracciones'=>$infracciones, 'vehiculos'=>$vehiculos, 'pagos'=>$pagos, 'id'=>$id]);
+        return view('actas', [
+            'actas'=>$actas,
+            'inspectores'=>$inspectores,
+            'empresas'=>$empresas,
+            'conductores'=>$conductores,
+            'infracciones'=>$infracciones,
+            'vehiculos'=>$vehiculos,
+            'pagos'=>$pagos,
+            'id'=>$id
+        ]);
     }
 
     // ActaControlador.php

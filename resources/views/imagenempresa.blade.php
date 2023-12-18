@@ -7,7 +7,7 @@
 <canvas id="myChart" width="400" height="200"></canvas>
 
 <script>
-    
+
     var labels = {!! json_encode($labels) !!}; // Aquí se pasarán los datos desde el controlador
     var data = {!! json_encode($datos) !!}; // Aquí se pasarán los datos desde el controlador
     var backgroundColors = ['#FF5733', '#3366FF', '#33FF33'];

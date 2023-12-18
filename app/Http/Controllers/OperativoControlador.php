@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Operativo;
 use App\Models\Acta;
+use App\Models\Province;
+use App\Models\District;
 
 class OperativoControlador extends Controller
 {
@@ -14,7 +16,13 @@ class OperativoControlador extends Controller
     public function index()
     {
         $operativos = Operativo::orderBy('fecha', 'desc')->paginate(5);
-        return view('operativos', ['resultados' => $operativos]);
+        $provinces = Province::all();
+        $districts = District::all();
+        return view('operativos', [
+            'resultados' => $operativos,
+            'provinces' => $provinces,
+            'districts' => $districts
+        ]);
     }
 
     /**

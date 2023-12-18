@@ -1,6 +1,6 @@
 @php
     $indicaciones = "INGRESE N° DE ACTA DE CONTROL";
-    $ndigits = 8;
+    $ndigits = 7;
 @endphp
 <form class="row col-md-12"  action="{{ route('consulta.buscar') }}" method="GET">
     @csrf

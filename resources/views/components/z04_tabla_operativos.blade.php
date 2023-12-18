@@ -37,11 +37,18 @@
 
                                 <div class="form-group">
                                     <label for="provincia">Provincia:</label>
-                                    <input type="text" class="form-control" id="provincia" name="provincia" placeholder="Ingrese la provincia">
+                                    <select class="form-control" id="provincia" name="provincia">
+                                        <option value="">Seleccione la Provincia</option>
+                                        <!-- Provinces will be dynamically populated based on the selected department -->
+                                    </select>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="distrito">Distrito:</label>
-                                    <input type="text" class="form-control" id="distrito" name="distrito" placeholder="Ingrese el distrito">
+                                    <select class="form-control" id="distrito" name="distrito" disabled>
+                                        <option value="">Seleccione el distrito</option>
+                                        <!-- Districts will be dynamically populated based on the selected province -->
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -139,6 +146,7 @@
                     <!--CABECERA-->
                     <thead class="thead-dark">
                             <tr>
+                                <th scope="col">N°</th>
                                 <th scope="col">TIPO DE OPERATIVO</th>
                                 <th scope="col">LUGAR DE OPERATIVO</th>
                                 <th scope="col">PROVINCIA</th>
@@ -157,8 +165,9 @@
                     <!--CUERPO-->
                     <tbody>
 
-                            @foreach($resultados as $operativo)
-                                    <tr>
+                            @foreach($resultados as $index => $operativo)
+                                <tr>
+                                    <td>{{$index + 1 }}</td>
                                     <td>{{$operativo->tipo}}</td>
                                     <td>{{$operativo->lugar}}</td>
                                     <td>{{$operativo->provincia}}</td>
@@ -231,7 +240,7 @@
                                         </form>
 
                                     </td>
-                                    </tr>
+                                </tr>
                             @endforeach
                     </tbody>
 
@@ -241,6 +250,7 @@
 
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     function capturar(id,lugar,provincia,distrito,fecha,diahabiles,tipo)
         {
@@ -255,4 +265,44 @@
             document.getElementById("numeroedit").value = diahabiles;
             document.getElementById("inputGroupSelect01edit").value = tipo;
         }
+
+        $(document).ready(function(){
+    // Fetch Provinces
+    $.ajax({
+        type: 'GET',
+        url: '{{ route('get-provinces') }}',
+        dataType: 'JSON',
+        success: function(response){
+            var options = '<option value="">Seleccione la Provincia</option>';
+            $.each(response, function(index, value){
+                options += '<option value="'+value.id+'">'+value.name+'</option>';
+            });
+            $('#provincia').html(options);
+            $('#distrito').html('<option value="">Seleccione el distrito</option>');
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(jqXHR);
+        }
+    });
+
+    // Fetch Districts based on selected Province
+    $('#provincia').on('change', function(){
+        var id = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: '{{ url('get-districts') }}/' + id, // Use url() to generate the correct URL
+            dataType: 'JSON',
+            success: function(response){
+                var options = '<option value="">Seleccione el distrito</option>';
+                $.each(response, function(index, value){
+                    options += '<option value="'+value.id+'">'+value.name+'</option>';
+                });
+                $('#distrito').html(options);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(jqXHR);
+            }
+        });
+    });
+});
 </script>
